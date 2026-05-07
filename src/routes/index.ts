@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { AuthRoutes } from '../modules/Auth/auth.route';
 import { EquipmentRoutes } from '../modules/Equipment/equipment.route';
 import { UserRoutes } from '../modules/User/user.route';
+import { BookingsRoutes } from '../modules/Bookings/bookings.route';
 
 const router = Router();
 
@@ -18,10 +19,15 @@ const moduleRoutes: { path: string; route: any }[] = [
     path: '/equipment',
     route: EquipmentRoutes,
   },
+  {
+    path: '/bookings',
+    route: BookingsRoutes,
+  },
 ];
 
 moduleRoutes.forEach((route) => router.use(route.path, route.route));
 
 export default router;
+
 
 
