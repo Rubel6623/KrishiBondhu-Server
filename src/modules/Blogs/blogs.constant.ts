@@ -1,3 +1,20 @@
 export const BlogsSearchableFields = [
-    // Add searchable fields here
-    ];
+    "title",
+    "content",
+    "authorName",
+    "authorEmail",
+];
+
+export const BlogsFilterableFields = [
+    "searchTerm",
+    "category",
+    "status",
+    "authorEmail"
+];
+
+export const BlogsPaginationFields = [
+    "page",
+    "limit",
+    "sortBy",
+    "sortOrder"
+];

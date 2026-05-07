@@ -37,3 +37,25 @@ export const AIFeatureType = {
 } as const
 
 export type AIFeatureType = (typeof AIFeatureType)[keyof typeof AIFeatureType]
+
+
+export const BlogCategory = {
+  RICE: 'RICE',
+  WHEAT: 'WHEAT',
+  POTATO: 'POTATO',
+  VEGETABLE: 'VEGETABLE',
+  FRUIT: 'FRUIT',
+  SOIL: 'SOIL',
+  FERTILIZER: 'FERTILIZER',
+  OTHER: 'OTHER'
+} as const
+
+export type BlogCategory = (typeof BlogCategory)[keyof typeof BlogCategory]
+
+
+export const BlogStatus = {
+  DRAFT: 'DRAFT',
+  PUBLISHED: 'PUBLISHED'
+} as const
+
+export type BlogStatus = (typeof BlogStatus)[keyof typeof BlogStatus]

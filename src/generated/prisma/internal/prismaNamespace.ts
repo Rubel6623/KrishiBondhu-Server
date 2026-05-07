@@ -1132,9 +1132,12 @@ export const BlogScalarFieldEnum = {
   slug: 'slug',
   content: 'content',
   excerpt: 'excerpt',
-  coverImage: 'coverImage',
+  image: 'image',
+  category: 'category',
+  status: 'status',
   authorId: 'authorId',
-  published: 'published',
+  authorName: 'authorName',
+  authorEmail: 'authorEmail',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -1286,6 +1289,34 @@ export type EnumAIFeatureTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$Pr
  * Reference to a field of type 'AIFeatureType[]'
  */
 export type ListEnumAIFeatureTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AIFeatureType[]'>
+    
+
+
+/**
+ * Reference to a field of type 'BlogCategory'
+ */
+export type EnumBlogCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BlogCategory'>
+    
+
+
+/**
+ * Reference to a field of type 'BlogCategory[]'
+ */
+export type ListEnumBlogCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BlogCategory[]'>
+    
+
+
+/**
+ * Reference to a field of type 'BlogStatus'
+ */
+export type EnumBlogStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BlogStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'BlogStatus[]'
+ */
+export type ListEnumBlogStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BlogStatus[]'>
     
 
 /**

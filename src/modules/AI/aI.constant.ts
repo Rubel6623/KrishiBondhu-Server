@@ -1,3 +1,16 @@
 export const AISearchableFields = [
-    // Add searchable fields here
-    ];
+    "query",
+    "answer"
+];
+
+export const AIOrFilterableFields = [
+    "query",
+    "answer"
+];
+
+export const AIPaginationFields = [
+    "page",
+    "limit",
+    "sortBy",
+    "sortOrder"
+];

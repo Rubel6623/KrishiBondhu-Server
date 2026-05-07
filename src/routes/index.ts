@@ -3,6 +3,7 @@ import { AuthRoutes } from '../modules/Auth/auth.route';
 import { EquipmentRoutes } from '../modules/Equipment/equipment.route';
 import { UserRoutes } from '../modules/User/user.route';
 import { BookingsRoutes } from '../modules/Bookings/bookings.route';
+import { BlogsRoutes } from '../modules/Blogs/blogs.route';
 
 const router = Router();
 
@@ -22,6 +23,10 @@ const moduleRoutes: { path: string; route: any }[] = [
   {
     path: '/bookings',
     route: BookingsRoutes,
+  },
+  {
+    path: '/blogs',
+    route: BlogsRoutes,
   },
 ];
 

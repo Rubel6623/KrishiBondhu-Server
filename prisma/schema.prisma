@@ -123,19 +123,38 @@ model AIQuery {
   user        User          @relation(fields: [userId], references: [id])
 }
 
-model Blog {
-  id          String   @id @default(cuid())
-  title       String
-  slug        String   @unique
-  content     String   // HTML or MDX
-  excerpt     String?
-  coverImage  String?
-  authorId    String
-  published   Boolean  @default(false)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+enum BlogCategory {
+  RICE
+  WHEAT
+  POTATO
+  VEGETABLE
+  FRUIT
+  SOIL
+  FERTILIZER
+  OTHER
+}
 
-  author      User     @relation(fields: [authorId], references: [id])
+enum BlogStatus {
+  DRAFT
+  PUBLISHED
+}
+
+model Blog {
+  id          String       @id @default(cuid())
+  title       String
+  slug        String       @unique
+  content     String       // HTML or MDX
+  excerpt     String?
+  image       String?
+  category    BlogCategory @default(OTHER)
+  status      BlogStatus   @default(DRAFT)
+  authorId    String
+  authorName  String
+  authorEmail String
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  author      User         @relation(fields: [authorId], references: [id])
 }
 
 model Notification {
