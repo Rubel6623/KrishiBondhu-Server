@@ -1,0 +1,149 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  FARMER
+  PROVIDER
+  ADMIN
+}
+
+enum BookingStatus {
+  PENDING
+  ACCEPTED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum AIFeatureType {
+  CROP_ASSISTANT
+  RECOMMENDATION
+  CONTENT_GENERATOR
+  DATA_ANALYZER
+}
+
+// Core Models
+model User {
+  id               String         @id @default(cuid())
+  name             String
+  email            String         @unique
+  password         String
+  phone            String?
+  location         String?
+  avatar           String?
+  role             Role           @default(FARMER)
+  isVerified       Boolean        @default(false)
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+
+  equipment        Equipment[]    @relation("ProviderEquipment")
+  bookingsAsFarmer Booking[]      @relation("FarmerBookings")
+  reviews          Review[]
+  aiQueries        AIQuery[]
+  notifications    Notification[]
+  blogs            Blog[]         // Fixed missing relation
+}
+
+model Equipment {
+  id            String    @id @default(cuid())
+  title         String
+  description   String
+  pricePerDay   Float
+  location      String
+  availability  Boolean   @default(true)
+  rating        Float     @default(0) // Logic: Average of Review ratings
+  images        String[]
+  categoryId    String
+  providerId    String
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  provider      User      @relation("ProviderEquipment", fields: [providerId], references: [id])
+  category      Category  @relation(fields: [categoryId], references: [id])
+  bookings      Booking[]
+  reviews       Review[]
+
+  @@index([location])
+  @@index([categoryId])
+}
+
+model Category {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String?
+  icon        String?
+
+  equipment   Equipment[]
+}
+
+model Booking {
+  id            String        @id @default(cuid())
+  farmerId      String
+  equipmentId   String
+  status        BookingStatus @default(PENDING)
+  startDate     DateTime
+  endDate       DateTime
+  totalPrice    Float
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  // Relations
+  farmer        User          @relation("FarmerBookings", fields: [farmerId], references: [id])
+  equipment     Equipment     @relation(fields: [equipmentId], references: [id])
+}
+
+model Review {
+  id          String   @id @default(cuid())
+  rating      Int      // 1-5
+  comment     String?
+  userId      String
+  equipmentId String
+  createdAt   DateTime @default(now())
+
+  user        User     @relation(fields: [userId], references: [id])
+  equipment   Equipment @relation(fields: [equipmentId], references: [id])
+}
+
+model AIQuery {
+  id          String        @id @default(cuid())
+  userId      String
+  prompt      String
+  response    String
+  featureType AIFeatureType
+  createdAt   DateTime      @default(now())
+
+  user        User          @relation(fields: [userId], references: [id])
+}
+
+model Blog {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  content     String   // HTML or MDX
+  excerpt     String?
+  coverImage  String?
+  authorId    String
+  published   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  author      User     @relation(fields: [authorId], references: [id])
+}
+
+model Notification {
+  id          String   @id @default(cuid())
+  userId      String
+  title       String
+  message     String
+  isRead      Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  user        User     @relation(fields: [userId], references: [id])
+}
