@@ -1,4 +1,6 @@
 import { Request, Response } from 'express';
+import httpStatus from 'http-status';
+import sendResponse from '../../utils/sendResponse';
 import { EquipmentService } from './equipment.service';
 
 const createEquipment = async (req: Request, res: Response) => {
@@ -6,13 +8,14 @@ const createEquipment = async (req: Request, res: Response) => {
     const providerId = (req as any).user.id; // From Auth Middleware
     const result = await EquipmentService.createEquipment(providerId, req.body);
     
-    res.status(201).json({
+    sendResponse(res, {
+      statusCode: httpStatus.CREATED,
       success: true,
       message: "Equipment listed successfully",
       data: result
     });
   } catch (error: any) {
-    res.status(500).json({ success: false, message: error.message });
+    res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ success: false, message: error.message });
   }
 };
 
@@ -21,16 +24,18 @@ const getAllEquipment = async (req: Request, res: Response) => {
     const filters = req.query;
     const result = await EquipmentService.getAllEquipment(filters);
     
-    res.status(200).json({
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
       success: true,
+      message: "Equipment retrieved successfully",
       data: result
     });
   } catch (error: any) {
-    res.status(500).json({ success: false, message: error.message });
+    res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ success: false, message: error.message });
   }
 };
 
 export const EquipmentController = {
   createEquipment,
   getAllEquipment
-};
+};

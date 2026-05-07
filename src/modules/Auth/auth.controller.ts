@@ -1,17 +1,20 @@
 import { Request, Response } from "express";
+import httpStatus from "http-status";
+import sendResponse from "../../utils/sendResponse";
 import { AuthService } from "./auth.service";
 
 const createUser = async (req: Request, res: Response) => {
   try {
     const result = await AuthService.createUserIntoDB(req.body);
-    res.status(200).json({
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
       success: true,
       message: "User created successfully",
       data: result,
     });
   } catch (e) {
     console.log(e);
-      res.status(400).json({
+    res.status(httpStatus.BAD_REQUEST).json({
       error: "User creation failed",
       details: e,
     });
@@ -25,21 +28,21 @@ const loginUser = async (req: Request, res: Response) => {
       httpOnly: true,
       secure: false,
       sameSite: "strict",
-    })
-      res.status(200).json({
+    });
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
       success: true,
       message: "User Login successfully",
-      data: result
+      data: result,
     });
   } catch (e: any) {
-    res.status(401).json({
+    res.status(httpStatus.UNAUTHORIZED).json({
       success: false,
       message: e.message || "User Login failed",
       error: e,
     });
   }
 };
-
 
 const getMe = async (req: Request, res: Response) => {
   try {
@@ -48,25 +51,27 @@ const getMe = async (req: Request, res: Response) => {
     const result = await AuthService.getMeFromDB(userId);
 
     if (!result) {
-      return res.status(404).json({
+      return sendResponse(res, {
+        statusCode: httpStatus.NOT_FOUND,
         success: false,
         message: "User not found",
+        data: null,
       });
     }
 
-    res.status(200).json({
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
       success: true,
       message: "User profile retrieved successfully",
       data: result,
     });
   } catch (error: any) {
-    res.status(500).json({
+    res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
       success: false,
       message: error.message || "Internal Server Error",
     });
   }
 };
-
 
 const updateMe = async (req: Request, res: Response) => {
   try {
@@ -80,20 +85,19 @@ const updateMe = async (req: Request, res: Response) => {
       location,
     });
 
-    res.status(200).json({
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
       success: true,
       message: "Profile updated successfully",
       data: result,
     });
   } catch (error: any) {
-    res.status(500).json({
+    res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
       success: false,
       message: error.message || "Internal Server Error",
     });
   }
 };
-
-
 
 const socialLogin = async (req: Request, res: Response) => {
   try {
@@ -103,13 +107,14 @@ const socialLogin = async (req: Request, res: Response) => {
       secure: false,
       sameSite: "strict",
     });
-    res.status(200).json({
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
       success: true,
       message: "User Social Login successfully",
       data: result,
     });
   } catch (e: any) {
-    res.status(400).json({
+    res.status(httpStatus.BAD_REQUEST).json({
       success: false,
       message: e.message || "Social Login failed",
       error: e,
@@ -124,4 +129,5 @@ export const AuthController = {
   getMe,
   updateMe,
 };
+
 
