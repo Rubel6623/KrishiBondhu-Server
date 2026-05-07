@@ -36,7 +36,7 @@ const getAllBlogs = async (
         whereConditions.OR = BlogsSearchableFields.map(field => ({
             [field]: {
                 contains: searchTerm,
-                mode: 'insensitive',
+                mode: 'insensitive' as Prisma.QueryMode,
             },
         }));
     }
@@ -77,10 +77,19 @@ const getAllBlogs = async (
 const getBlogById = async (id: string): Promise<any | null> => {
     const result = await prisma.blog.findUnique({
         where: { id },
-        include: { author: true }
+        include: { author: true, provider: true }
     });
     return result;
 };
+
+const getBlogBySlug = async (slug: string): Promise<any | null> => {
+    const result = await prisma.blog.findUnique({
+        where: { slug },
+        include: { author: true, provider: true }
+    });
+    return result;
+};
+
 
 const updateBlog = async (id: string, payload: Partial<TBlogs>): Promise<any | null> => {
     const result = await prisma.blog.update({
@@ -101,6 +110,7 @@ export const BlogsService = {
     createBlog,
     getAllBlogs,
     getBlogById,
+    getBlogBySlug,
     updateBlog,
     deleteBlog,
 };

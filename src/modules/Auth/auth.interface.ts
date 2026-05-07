@@ -1,3 +1,12 @@
-export type TAuth = {
-    // Add interface properties here
+import { Role } from '../../generated/prisma/client';
+
+export interface IAuthResponse {
+    accessToken: string;
+    user: {
+        id: string;
+        email: string;
+        role: Role;
+        name: string;
+        avatar?: string | null;
     };
+}

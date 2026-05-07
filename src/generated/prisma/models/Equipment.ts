@@ -272,7 +272,7 @@ export type EquipmentWhereInput = {
   providerId?: Prisma.StringFilter<"Equipment"> | string
   createdAt?: Prisma.DateTimeFilter<"Equipment"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Equipment"> | Date | string
-  provider?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  provider?: Prisma.XOR<Prisma.ProviderScalarRelationFilter, Prisma.ProviderWhereInput>
   category?: Prisma.XOR<Prisma.CategoryScalarRelationFilter, Prisma.CategoryWhereInput>
   bookings?: Prisma.BookingListRelationFilter
   reviews?: Prisma.ReviewListRelationFilter
@@ -291,7 +291,7 @@ export type EquipmentOrderByWithRelationInput = {
   providerId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  provider?: Prisma.UserOrderByWithRelationInput
+  provider?: Prisma.ProviderOrderByWithRelationInput
   category?: Prisma.CategoryOrderByWithRelationInput
   bookings?: Prisma.BookingOrderByRelationAggregateInput
   reviews?: Prisma.ReviewOrderByRelationAggregateInput
@@ -313,7 +313,7 @@ export type EquipmentWhereUniqueInput = Prisma.AtLeast<{
   providerId?: Prisma.StringFilter<"Equipment"> | string
   createdAt?: Prisma.DateTimeFilter<"Equipment"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Equipment"> | Date | string
-  provider?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  provider?: Prisma.XOR<Prisma.ProviderScalarRelationFilter, Prisma.ProviderWhereInput>
   category?: Prisma.XOR<Prisma.CategoryScalarRelationFilter, Prisma.CategoryWhereInput>
   bookings?: Prisma.BookingListRelationFilter
   reviews?: Prisma.ReviewListRelationFilter
@@ -368,7 +368,7 @@ export type EquipmentCreateInput = {
   images?: Prisma.EquipmentCreateimagesInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
-  provider: Prisma.UserCreateNestedOneWithoutEquipmentInput
+  provider: Prisma.ProviderCreateNestedOneWithoutEquipmentInput
   category: Prisma.CategoryCreateNestedOneWithoutEquipmentInput
   bookings?: Prisma.BookingCreateNestedManyWithoutEquipmentInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutEquipmentInput
@@ -402,7 +402,7 @@ export type EquipmentUpdateInput = {
   images?: Prisma.EquipmentUpdateimagesInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  provider?: Prisma.UserUpdateOneRequiredWithoutEquipmentNestedInput
+  provider?: Prisma.ProviderUpdateOneRequiredWithoutEquipmentNestedInput
   category?: Prisma.CategoryUpdateOneRequiredWithoutEquipmentNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutEquipmentNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutEquipmentNestedInput
@@ -760,7 +760,7 @@ export type EquipmentCreateWithoutCategoryInput = {
   images?: Prisma.EquipmentCreateimagesInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
-  provider: Prisma.UserCreateNestedOneWithoutEquipmentInput
+  provider: Prisma.ProviderCreateNestedOneWithoutEquipmentInput
   bookings?: Prisma.BookingCreateNestedManyWithoutEquipmentInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutEquipmentInput
 }
@@ -818,7 +818,7 @@ export type EquipmentCreateWithoutBookingsInput = {
   images?: Prisma.EquipmentCreateimagesInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
-  provider: Prisma.UserCreateNestedOneWithoutEquipmentInput
+  provider: Prisma.ProviderCreateNestedOneWithoutEquipmentInput
   category: Prisma.CategoryCreateNestedOneWithoutEquipmentInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutEquipmentInput
 }
@@ -866,7 +866,7 @@ export type EquipmentUpdateWithoutBookingsInput = {
   images?: Prisma.EquipmentUpdateimagesInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  provider?: Prisma.UserUpdateOneRequiredWithoutEquipmentNestedInput
+  provider?: Prisma.ProviderUpdateOneRequiredWithoutEquipmentNestedInput
   category?: Prisma.CategoryUpdateOneRequiredWithoutEquipmentNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutEquipmentNestedInput
 }
@@ -898,7 +898,7 @@ export type EquipmentCreateWithoutReviewsInput = {
   images?: Prisma.EquipmentCreateimagesInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
-  provider: Prisma.UserCreateNestedOneWithoutEquipmentInput
+  provider: Prisma.ProviderCreateNestedOneWithoutEquipmentInput
   category: Prisma.CategoryCreateNestedOneWithoutEquipmentInput
   bookings?: Prisma.BookingCreateNestedManyWithoutEquipmentInput
 }
@@ -946,7 +946,7 @@ export type EquipmentUpdateWithoutReviewsInput = {
   images?: Prisma.EquipmentUpdateimagesInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  provider?: Prisma.UserUpdateOneRequiredWithoutEquipmentNestedInput
+  provider?: Prisma.ProviderUpdateOneRequiredWithoutEquipmentNestedInput
   category?: Prisma.CategoryUpdateOneRequiredWithoutEquipmentNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutEquipmentNestedInput
 }
@@ -1052,7 +1052,7 @@ export type EquipmentUpdateWithoutCategoryInput = {
   images?: Prisma.EquipmentUpdateimagesInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  provider?: Prisma.UserUpdateOneRequiredWithoutEquipmentNestedInput
+  provider?: Prisma.ProviderUpdateOneRequiredWithoutEquipmentNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutEquipmentNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutEquipmentNestedInput
 }
@@ -1140,7 +1140,7 @@ export type EquipmentSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   providerId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  provider?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  provider?: boolean | Prisma.ProviderDefaultArgs<ExtArgs>
   category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
   bookings?: boolean | Prisma.Equipment$bookingsArgs<ExtArgs>
   reviews?: boolean | Prisma.Equipment$reviewsArgs<ExtArgs>
@@ -1160,7 +1160,7 @@ export type EquipmentSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   providerId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  provider?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  provider?: boolean | Prisma.ProviderDefaultArgs<ExtArgs>
   category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["equipment"]>
 
@@ -1177,7 +1177,7 @@ export type EquipmentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   providerId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  provider?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  provider?: boolean | Prisma.ProviderDefaultArgs<ExtArgs>
   category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["equipment"]>
 
@@ -1198,25 +1198,25 @@ export type EquipmentSelectScalar = {
 
 export type EquipmentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "pricePerDay" | "location" | "availability" | "rating" | "images" | "categoryId" | "providerId" | "createdAt" | "updatedAt", ExtArgs["result"]["equipment"]>
 export type EquipmentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  provider?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  provider?: boolean | Prisma.ProviderDefaultArgs<ExtArgs>
   category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
   bookings?: boolean | Prisma.Equipment$bookingsArgs<ExtArgs>
   reviews?: boolean | Prisma.Equipment$reviewsArgs<ExtArgs>
   _count?: boolean | Prisma.EquipmentCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type EquipmentIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  provider?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  provider?: boolean | Prisma.ProviderDefaultArgs<ExtArgs>
   category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
 }
 export type EquipmentIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  provider?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  provider?: boolean | Prisma.ProviderDefaultArgs<ExtArgs>
   category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
 }
 
 export type $EquipmentPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Equipment"
   objects: {
-    provider: Prisma.$UserPayload<ExtArgs>
+    provider: Prisma.$ProviderPayload<ExtArgs>
     category: Prisma.$CategoryPayload<ExtArgs>
     bookings: Prisma.$BookingPayload<ExtArgs>[]
     reviews: Prisma.$ReviewPayload<ExtArgs>[]
@@ -1628,7 +1628,7 @@ readonly fields: EquipmentFieldRefs;
  */
 export interface Prisma__EquipmentClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  provider<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  provider<T extends Prisma.ProviderDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProviderDefaultArgs<ExtArgs>>): Prisma.Prisma__ProviderClient<runtime.Types.Result.GetResult<Prisma.$ProviderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   category<T extends Prisma.CategoryDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CategoryDefaultArgs<ExtArgs>>): Prisma.Prisma__CategoryClient<runtime.Types.Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   bookings<T extends Prisma.Equipment$bookingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Equipment$bookingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   reviews<T extends Prisma.Equipment$reviewsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Equipment$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>

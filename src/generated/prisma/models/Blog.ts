@@ -34,6 +34,7 @@ export type BlogMinAggregateOutputType = {
   category: $Enums.BlogCategory | null
   status: $Enums.BlogStatus | null
   authorId: string | null
+  providerId: string | null
   authorName: string | null
   authorEmail: string | null
   createdAt: Date | null
@@ -50,6 +51,7 @@ export type BlogMaxAggregateOutputType = {
   category: $Enums.BlogCategory | null
   status: $Enums.BlogStatus | null
   authorId: string | null
+  providerId: string | null
   authorName: string | null
   authorEmail: string | null
   createdAt: Date | null
@@ -66,6 +68,7 @@ export type BlogCountAggregateOutputType = {
   category: number
   status: number
   authorId: number
+  providerId: number
   authorName: number
   authorEmail: number
   createdAt: number
@@ -84,6 +87,7 @@ export type BlogMinAggregateInputType = {
   category?: true
   status?: true
   authorId?: true
+  providerId?: true
   authorName?: true
   authorEmail?: true
   createdAt?: true
@@ -100,6 +104,7 @@ export type BlogMaxAggregateInputType = {
   category?: true
   status?: true
   authorId?: true
+  providerId?: true
   authorName?: true
   authorEmail?: true
   createdAt?: true
@@ -116,6 +121,7 @@ export type BlogCountAggregateInputType = {
   category?: true
   status?: true
   authorId?: true
+  providerId?: true
   authorName?: true
   authorEmail?: true
   createdAt?: true
@@ -204,7 +210,8 @@ export type BlogGroupByOutputType = {
   image: string | null
   category: $Enums.BlogCategory
   status: $Enums.BlogStatus
-  authorId: string
+  authorId: string | null
+  providerId: string | null
   authorName: string
   authorEmail: string
   createdAt: Date
@@ -241,12 +248,14 @@ export type BlogWhereInput = {
   image?: Prisma.StringNullableFilter<"Blog"> | string | null
   category?: Prisma.EnumBlogCategoryFilter<"Blog"> | $Enums.BlogCategory
   status?: Prisma.EnumBlogStatusFilter<"Blog"> | $Enums.BlogStatus
-  authorId?: Prisma.StringFilter<"Blog"> | string
+  authorId?: Prisma.StringNullableFilter<"Blog"> | string | null
+  providerId?: Prisma.StringNullableFilter<"Blog"> | string | null
   authorName?: Prisma.StringFilter<"Blog"> | string
   authorEmail?: Prisma.StringFilter<"Blog"> | string
   createdAt?: Prisma.DateTimeFilter<"Blog"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Blog"> | Date | string
-  author?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  author?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  provider?: Prisma.XOR<Prisma.ProviderNullableScalarRelationFilter, Prisma.ProviderWhereInput> | null
 }
 
 export type BlogOrderByWithRelationInput = {
@@ -258,12 +267,14 @@ export type BlogOrderByWithRelationInput = {
   image?: Prisma.SortOrderInput | Prisma.SortOrder
   category?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  authorId?: Prisma.SortOrder
+  authorId?: Prisma.SortOrderInput | Prisma.SortOrder
+  providerId?: Prisma.SortOrderInput | Prisma.SortOrder
   authorName?: Prisma.SortOrder
   authorEmail?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   author?: Prisma.UserOrderByWithRelationInput
+  provider?: Prisma.ProviderOrderByWithRelationInput
 }
 
 export type BlogWhereUniqueInput = Prisma.AtLeast<{
@@ -278,12 +289,14 @@ export type BlogWhereUniqueInput = Prisma.AtLeast<{
   image?: Prisma.StringNullableFilter<"Blog"> | string | null
   category?: Prisma.EnumBlogCategoryFilter<"Blog"> | $Enums.BlogCategory
   status?: Prisma.EnumBlogStatusFilter<"Blog"> | $Enums.BlogStatus
-  authorId?: Prisma.StringFilter<"Blog"> | string
+  authorId?: Prisma.StringNullableFilter<"Blog"> | string | null
+  providerId?: Prisma.StringNullableFilter<"Blog"> | string | null
   authorName?: Prisma.StringFilter<"Blog"> | string
   authorEmail?: Prisma.StringFilter<"Blog"> | string
   createdAt?: Prisma.DateTimeFilter<"Blog"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Blog"> | Date | string
-  author?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  author?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  provider?: Prisma.XOR<Prisma.ProviderNullableScalarRelationFilter, Prisma.ProviderWhereInput> | null
 }, "id" | "slug">
 
 export type BlogOrderByWithAggregationInput = {
@@ -295,7 +308,8 @@ export type BlogOrderByWithAggregationInput = {
   image?: Prisma.SortOrderInput | Prisma.SortOrder
   category?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  authorId?: Prisma.SortOrder
+  authorId?: Prisma.SortOrderInput | Prisma.SortOrder
+  providerId?: Prisma.SortOrderInput | Prisma.SortOrder
   authorName?: Prisma.SortOrder
   authorEmail?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -317,7 +331,8 @@ export type BlogScalarWhereWithAggregatesInput = {
   image?: Prisma.StringNullableWithAggregatesFilter<"Blog"> | string | null
   category?: Prisma.EnumBlogCategoryWithAggregatesFilter<"Blog"> | $Enums.BlogCategory
   status?: Prisma.EnumBlogStatusWithAggregatesFilter<"Blog"> | $Enums.BlogStatus
-  authorId?: Prisma.StringWithAggregatesFilter<"Blog"> | string
+  authorId?: Prisma.StringNullableWithAggregatesFilter<"Blog"> | string | null
+  providerId?: Prisma.StringNullableWithAggregatesFilter<"Blog"> | string | null
   authorName?: Prisma.StringWithAggregatesFilter<"Blog"> | string
   authorEmail?: Prisma.StringWithAggregatesFilter<"Blog"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Blog"> | Date | string
@@ -337,7 +352,8 @@ export type BlogCreateInput = {
   authorEmail: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  author: Prisma.UserCreateNestedOneWithoutBlogsInput
+  author?: Prisma.UserCreateNestedOneWithoutBlogsInput
+  provider?: Prisma.ProviderCreateNestedOneWithoutBlogsInput
 }
 
 export type BlogUncheckedCreateInput = {
@@ -349,7 +365,8 @@ export type BlogUncheckedCreateInput = {
   image?: string | null
   category?: $Enums.BlogCategory
   status?: $Enums.BlogStatus
-  authorId: string
+  authorId?: string | null
+  providerId?: string | null
   authorName: string
   authorEmail: string
   createdAt?: Date | string
@@ -369,7 +386,8 @@ export type BlogUpdateInput = {
   authorEmail?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  author?: Prisma.UserUpdateOneRequiredWithoutBlogsNestedInput
+  author?: Prisma.UserUpdateOneWithoutBlogsNestedInput
+  provider?: Prisma.ProviderUpdateOneWithoutBlogsNestedInput
 }
 
 export type BlogUncheckedUpdateInput = {
@@ -381,7 +399,8 @@ export type BlogUncheckedUpdateInput = {
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.EnumBlogCategoryFieldUpdateOperationsInput | $Enums.BlogCategory
   status?: Prisma.EnumBlogStatusFieldUpdateOperationsInput | $Enums.BlogStatus
-  authorId?: Prisma.StringFieldUpdateOperationsInput | string
+  authorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  providerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   authorName?: Prisma.StringFieldUpdateOperationsInput | string
   authorEmail?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -397,7 +416,8 @@ export type BlogCreateManyInput = {
   image?: string | null
   category?: $Enums.BlogCategory
   status?: $Enums.BlogStatus
-  authorId: string
+  authorId?: string | null
+  providerId?: string | null
   authorName: string
   authorEmail: string
   createdAt?: Date | string
@@ -428,7 +448,8 @@ export type BlogUncheckedUpdateManyInput = {
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.EnumBlogCategoryFieldUpdateOperationsInput | $Enums.BlogCategory
   status?: Prisma.EnumBlogStatusFieldUpdateOperationsInput | $Enums.BlogStatus
-  authorId?: Prisma.StringFieldUpdateOperationsInput | string
+  authorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  providerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   authorName?: Prisma.StringFieldUpdateOperationsInput | string
   authorEmail?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -455,6 +476,7 @@ export type BlogCountOrderByAggregateInput = {
   category?: Prisma.SortOrder
   status?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
+  providerId?: Prisma.SortOrder
   authorName?: Prisma.SortOrder
   authorEmail?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -471,6 +493,7 @@ export type BlogMaxOrderByAggregateInput = {
   category?: Prisma.SortOrder
   status?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
+  providerId?: Prisma.SortOrder
   authorName?: Prisma.SortOrder
   authorEmail?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -487,6 +510,7 @@ export type BlogMinOrderByAggregateInput = {
   category?: Prisma.SortOrder
   status?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
+  providerId?: Prisma.SortOrder
   authorName?: Prisma.SortOrder
   authorEmail?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -535,6 +559,48 @@ export type BlogUncheckedUpdateManyWithoutAuthorNestedInput = {
   deleteMany?: Prisma.BlogScalarWhereInput | Prisma.BlogScalarWhereInput[]
 }
 
+export type BlogCreateNestedManyWithoutProviderInput = {
+  create?: Prisma.XOR<Prisma.BlogCreateWithoutProviderInput, Prisma.BlogUncheckedCreateWithoutProviderInput> | Prisma.BlogCreateWithoutProviderInput[] | Prisma.BlogUncheckedCreateWithoutProviderInput[]
+  connectOrCreate?: Prisma.BlogCreateOrConnectWithoutProviderInput | Prisma.BlogCreateOrConnectWithoutProviderInput[]
+  createMany?: Prisma.BlogCreateManyProviderInputEnvelope
+  connect?: Prisma.BlogWhereUniqueInput | Prisma.BlogWhereUniqueInput[]
+}
+
+export type BlogUncheckedCreateNestedManyWithoutProviderInput = {
+  create?: Prisma.XOR<Prisma.BlogCreateWithoutProviderInput, Prisma.BlogUncheckedCreateWithoutProviderInput> | Prisma.BlogCreateWithoutProviderInput[] | Prisma.BlogUncheckedCreateWithoutProviderInput[]
+  connectOrCreate?: Prisma.BlogCreateOrConnectWithoutProviderInput | Prisma.BlogCreateOrConnectWithoutProviderInput[]
+  createMany?: Prisma.BlogCreateManyProviderInputEnvelope
+  connect?: Prisma.BlogWhereUniqueInput | Prisma.BlogWhereUniqueInput[]
+}
+
+export type BlogUpdateManyWithoutProviderNestedInput = {
+  create?: Prisma.XOR<Prisma.BlogCreateWithoutProviderInput, Prisma.BlogUncheckedCreateWithoutProviderInput> | Prisma.BlogCreateWithoutProviderInput[] | Prisma.BlogUncheckedCreateWithoutProviderInput[]
+  connectOrCreate?: Prisma.BlogCreateOrConnectWithoutProviderInput | Prisma.BlogCreateOrConnectWithoutProviderInput[]
+  upsert?: Prisma.BlogUpsertWithWhereUniqueWithoutProviderInput | Prisma.BlogUpsertWithWhereUniqueWithoutProviderInput[]
+  createMany?: Prisma.BlogCreateManyProviderInputEnvelope
+  set?: Prisma.BlogWhereUniqueInput | Prisma.BlogWhereUniqueInput[]
+  disconnect?: Prisma.BlogWhereUniqueInput | Prisma.BlogWhereUniqueInput[]
+  delete?: Prisma.BlogWhereUniqueInput | Prisma.BlogWhereUniqueInput[]
+  connect?: Prisma.BlogWhereUniqueInput | Prisma.BlogWhereUniqueInput[]
+  update?: Prisma.BlogUpdateWithWhereUniqueWithoutProviderInput | Prisma.BlogUpdateWithWhereUniqueWithoutProviderInput[]
+  updateMany?: Prisma.BlogUpdateManyWithWhereWithoutProviderInput | Prisma.BlogUpdateManyWithWhereWithoutProviderInput[]
+  deleteMany?: Prisma.BlogScalarWhereInput | Prisma.BlogScalarWhereInput[]
+}
+
+export type BlogUncheckedUpdateManyWithoutProviderNestedInput = {
+  create?: Prisma.XOR<Prisma.BlogCreateWithoutProviderInput, Prisma.BlogUncheckedCreateWithoutProviderInput> | Prisma.BlogCreateWithoutProviderInput[] | Prisma.BlogUncheckedCreateWithoutProviderInput[]
+  connectOrCreate?: Prisma.BlogCreateOrConnectWithoutProviderInput | Prisma.BlogCreateOrConnectWithoutProviderInput[]
+  upsert?: Prisma.BlogUpsertWithWhereUniqueWithoutProviderInput | Prisma.BlogUpsertWithWhereUniqueWithoutProviderInput[]
+  createMany?: Prisma.BlogCreateManyProviderInputEnvelope
+  set?: Prisma.BlogWhereUniqueInput | Prisma.BlogWhereUniqueInput[]
+  disconnect?: Prisma.BlogWhereUniqueInput | Prisma.BlogWhereUniqueInput[]
+  delete?: Prisma.BlogWhereUniqueInput | Prisma.BlogWhereUniqueInput[]
+  connect?: Prisma.BlogWhereUniqueInput | Prisma.BlogWhereUniqueInput[]
+  update?: Prisma.BlogUpdateWithWhereUniqueWithoutProviderInput | Prisma.BlogUpdateWithWhereUniqueWithoutProviderInput[]
+  updateMany?: Prisma.BlogUpdateManyWithWhereWithoutProviderInput | Prisma.BlogUpdateManyWithWhereWithoutProviderInput[]
+  deleteMany?: Prisma.BlogScalarWhereInput | Prisma.BlogScalarWhereInput[]
+}
+
 export type EnumBlogCategoryFieldUpdateOperationsInput = {
   set?: $Enums.BlogCategory
 }
@@ -556,6 +622,7 @@ export type BlogCreateWithoutAuthorInput = {
   authorEmail: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  provider?: Prisma.ProviderCreateNestedOneWithoutBlogsInput
 }
 
 export type BlogUncheckedCreateWithoutAuthorInput = {
@@ -567,6 +634,7 @@ export type BlogUncheckedCreateWithoutAuthorInput = {
   image?: string | null
   category?: $Enums.BlogCategory
   status?: $Enums.BlogStatus
+  providerId?: string | null
   authorName: string
   authorEmail: string
   createdAt?: Date | string
@@ -611,11 +679,70 @@ export type BlogScalarWhereInput = {
   image?: Prisma.StringNullableFilter<"Blog"> | string | null
   category?: Prisma.EnumBlogCategoryFilter<"Blog"> | $Enums.BlogCategory
   status?: Prisma.EnumBlogStatusFilter<"Blog"> | $Enums.BlogStatus
-  authorId?: Prisma.StringFilter<"Blog"> | string
+  authorId?: Prisma.StringNullableFilter<"Blog"> | string | null
+  providerId?: Prisma.StringNullableFilter<"Blog"> | string | null
   authorName?: Prisma.StringFilter<"Blog"> | string
   authorEmail?: Prisma.StringFilter<"Blog"> | string
   createdAt?: Prisma.DateTimeFilter<"Blog"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Blog"> | Date | string
+}
+
+export type BlogCreateWithoutProviderInput = {
+  id?: string
+  title: string
+  slug: string
+  content: string
+  excerpt?: string | null
+  image?: string | null
+  category?: $Enums.BlogCategory
+  status?: $Enums.BlogStatus
+  authorName: string
+  authorEmail: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  author?: Prisma.UserCreateNestedOneWithoutBlogsInput
+}
+
+export type BlogUncheckedCreateWithoutProviderInput = {
+  id?: string
+  title: string
+  slug: string
+  content: string
+  excerpt?: string | null
+  image?: string | null
+  category?: $Enums.BlogCategory
+  status?: $Enums.BlogStatus
+  authorId?: string | null
+  authorName: string
+  authorEmail: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type BlogCreateOrConnectWithoutProviderInput = {
+  where: Prisma.BlogWhereUniqueInput
+  create: Prisma.XOR<Prisma.BlogCreateWithoutProviderInput, Prisma.BlogUncheckedCreateWithoutProviderInput>
+}
+
+export type BlogCreateManyProviderInputEnvelope = {
+  data: Prisma.BlogCreateManyProviderInput | Prisma.BlogCreateManyProviderInput[]
+  skipDuplicates?: boolean
+}
+
+export type BlogUpsertWithWhereUniqueWithoutProviderInput = {
+  where: Prisma.BlogWhereUniqueInput
+  update: Prisma.XOR<Prisma.BlogUpdateWithoutProviderInput, Prisma.BlogUncheckedUpdateWithoutProviderInput>
+  create: Prisma.XOR<Prisma.BlogCreateWithoutProviderInput, Prisma.BlogUncheckedCreateWithoutProviderInput>
+}
+
+export type BlogUpdateWithWhereUniqueWithoutProviderInput = {
+  where: Prisma.BlogWhereUniqueInput
+  data: Prisma.XOR<Prisma.BlogUpdateWithoutProviderInput, Prisma.BlogUncheckedUpdateWithoutProviderInput>
+}
+
+export type BlogUpdateManyWithWhereWithoutProviderInput = {
+  where: Prisma.BlogScalarWhereInput
+  data: Prisma.XOR<Prisma.BlogUpdateManyMutationInput, Prisma.BlogUncheckedUpdateManyWithoutProviderInput>
 }
 
 export type BlogCreateManyAuthorInput = {
@@ -627,6 +754,7 @@ export type BlogCreateManyAuthorInput = {
   image?: string | null
   category?: $Enums.BlogCategory
   status?: $Enums.BlogStatus
+  providerId?: string | null
   authorName: string
   authorEmail: string
   createdAt?: Date | string
@@ -646,6 +774,7 @@ export type BlogUpdateWithoutAuthorInput = {
   authorEmail?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  provider?: Prisma.ProviderUpdateOneWithoutBlogsNestedInput
 }
 
 export type BlogUncheckedUpdateWithoutAuthorInput = {
@@ -657,6 +786,7 @@ export type BlogUncheckedUpdateWithoutAuthorInput = {
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.EnumBlogCategoryFieldUpdateOperationsInput | $Enums.BlogCategory
   status?: Prisma.EnumBlogStatusFieldUpdateOperationsInput | $Enums.BlogStatus
+  providerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   authorName?: Prisma.StringFieldUpdateOperationsInput | string
   authorEmail?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -672,6 +802,71 @@ export type BlogUncheckedUpdateManyWithoutAuthorInput = {
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.EnumBlogCategoryFieldUpdateOperationsInput | $Enums.BlogCategory
   status?: Prisma.EnumBlogStatusFieldUpdateOperationsInput | $Enums.BlogStatus
+  providerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  authorName?: Prisma.StringFieldUpdateOperationsInput | string
+  authorEmail?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type BlogCreateManyProviderInput = {
+  id?: string
+  title: string
+  slug: string
+  content: string
+  excerpt?: string | null
+  image?: string | null
+  category?: $Enums.BlogCategory
+  status?: $Enums.BlogStatus
+  authorId?: string | null
+  authorName: string
+  authorEmail: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type BlogUpdateWithoutProviderInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.EnumBlogCategoryFieldUpdateOperationsInput | $Enums.BlogCategory
+  status?: Prisma.EnumBlogStatusFieldUpdateOperationsInput | $Enums.BlogStatus
+  authorName?: Prisma.StringFieldUpdateOperationsInput | string
+  authorEmail?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  author?: Prisma.UserUpdateOneWithoutBlogsNestedInput
+}
+
+export type BlogUncheckedUpdateWithoutProviderInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.EnumBlogCategoryFieldUpdateOperationsInput | $Enums.BlogCategory
+  status?: Prisma.EnumBlogStatusFieldUpdateOperationsInput | $Enums.BlogStatus
+  authorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  authorName?: Prisma.StringFieldUpdateOperationsInput | string
+  authorEmail?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type BlogUncheckedUpdateManyWithoutProviderInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.EnumBlogCategoryFieldUpdateOperationsInput | $Enums.BlogCategory
+  status?: Prisma.EnumBlogStatusFieldUpdateOperationsInput | $Enums.BlogStatus
+  authorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   authorName?: Prisma.StringFieldUpdateOperationsInput | string
   authorEmail?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -690,11 +885,13 @@ export type BlogSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   category?: boolean
   status?: boolean
   authorId?: boolean
+  providerId?: boolean
   authorName?: boolean
   authorEmail?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  author?: boolean | Prisma.Blog$authorArgs<ExtArgs>
+  provider?: boolean | Prisma.Blog$providerArgs<ExtArgs>
 }, ExtArgs["result"]["blog"]>
 
 export type BlogSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -707,11 +904,13 @@ export type BlogSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   category?: boolean
   status?: boolean
   authorId?: boolean
+  providerId?: boolean
   authorName?: boolean
   authorEmail?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  author?: boolean | Prisma.Blog$authorArgs<ExtArgs>
+  provider?: boolean | Prisma.Blog$providerArgs<ExtArgs>
 }, ExtArgs["result"]["blog"]>
 
 export type BlogSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -724,11 +923,13 @@ export type BlogSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   category?: boolean
   status?: boolean
   authorId?: boolean
+  providerId?: boolean
   authorName?: boolean
   authorEmail?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  author?: boolean | Prisma.Blog$authorArgs<ExtArgs>
+  provider?: boolean | Prisma.Blog$providerArgs<ExtArgs>
 }, ExtArgs["result"]["blog"]>
 
 export type BlogSelectScalar = {
@@ -741,27 +942,32 @@ export type BlogSelectScalar = {
   category?: boolean
   status?: boolean
   authorId?: boolean
+  providerId?: boolean
   authorName?: boolean
   authorEmail?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type BlogOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "slug" | "content" | "excerpt" | "image" | "category" | "status" | "authorId" | "authorName" | "authorEmail" | "createdAt" | "updatedAt", ExtArgs["result"]["blog"]>
+export type BlogOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "slug" | "content" | "excerpt" | "image" | "category" | "status" | "authorId" | "providerId" | "authorName" | "authorEmail" | "createdAt" | "updatedAt", ExtArgs["result"]["blog"]>
 export type BlogInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  author?: boolean | Prisma.Blog$authorArgs<ExtArgs>
+  provider?: boolean | Prisma.Blog$providerArgs<ExtArgs>
 }
 export type BlogIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  author?: boolean | Prisma.Blog$authorArgs<ExtArgs>
+  provider?: boolean | Prisma.Blog$providerArgs<ExtArgs>
 }
 export type BlogIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  author?: boolean | Prisma.Blog$authorArgs<ExtArgs>
+  provider?: boolean | Prisma.Blog$providerArgs<ExtArgs>
 }
 
 export type $BlogPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Blog"
   objects: {
-    author: Prisma.$UserPayload<ExtArgs>
+    author: Prisma.$UserPayload<ExtArgs> | null
+    provider: Prisma.$ProviderPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -772,7 +978,8 @@ export type $BlogPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     image: string | null
     category: $Enums.BlogCategory
     status: $Enums.BlogStatus
-    authorId: string
+    authorId: string | null
+    providerId: string | null
     authorName: string
     authorEmail: string
     createdAt: Date
@@ -1171,7 +1378,8 @@ readonly fields: BlogFieldRefs;
  */
 export interface Prisma__BlogClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  author<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  author<T extends Prisma.Blog$authorArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Blog$authorArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  provider<T extends Prisma.Blog$providerArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Blog$providerArgs<ExtArgs>>): Prisma.Prisma__ProviderClient<runtime.Types.Result.GetResult<Prisma.$ProviderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1210,6 +1418,7 @@ export interface BlogFieldRefs {
   readonly category: Prisma.FieldRef<"Blog", 'BlogCategory'>
   readonly status: Prisma.FieldRef<"Blog", 'BlogStatus'>
   readonly authorId: Prisma.FieldRef<"Blog", 'String'>
+  readonly providerId: Prisma.FieldRef<"Blog", 'String'>
   readonly authorName: Prisma.FieldRef<"Blog", 'String'>
   readonly authorEmail: Prisma.FieldRef<"Blog", 'String'>
   readonly createdAt: Prisma.FieldRef<"Blog", 'DateTime'>
@@ -1612,6 +1821,44 @@ export type BlogDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Limit how many Blogs to delete.
    */
   limit?: number
+}
+
+/**
+ * Blog.author
+ */
+export type Blog$authorArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
+}
+
+/**
+ * Blog.provider
+ */
+export type Blog$providerArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Provider
+   */
+  select?: Prisma.ProviderSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Provider
+   */
+  omit?: Prisma.ProviderOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProviderInclude<ExtArgs> | null
+  where?: Prisma.ProviderWhereInput
 }
 
 /**

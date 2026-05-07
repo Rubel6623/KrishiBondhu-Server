@@ -43,13 +43,34 @@ model User {
   createdAt        DateTime       @default(now())
   updatedAt        DateTime       @updatedAt
 
-  equipment        Equipment[]    @relation("ProviderEquipment")
   bookingsAsFarmer Booking[]      @relation("FarmerBookings")
   reviews          Review[]
   aiQueries        AIQuery[]
   notifications    Notification[]
-  blogs            Blog[]         // Fixed missing relation
+  blogs            Blog[]         
 }
+
+model Provider {
+  id          String    @id @default(cuid())
+  name        String
+  email       String    @unique
+  password    String
+  phone       String?
+  location    String?
+  avatar      String?
+  role        Role      @default(PROVIDER)
+  isVerified  Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  equipment        Equipment[]    @relation("ProviderEquipment")
+  bookingsAsProvider Booking[]      @relation("ProviderBookings")
+  reviews          Review[]
+  aiQueries        AIQuery[]
+  notifications    Notification[]
+  blogs            Blog[]         
+}
+
 
 model Equipment {
   id            String    @id @default(cuid())
@@ -66,7 +87,7 @@ model Equipment {
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
-  provider      User      @relation("ProviderEquipment", fields: [providerId], references: [id])
+  provider      Provider  @relation("ProviderEquipment", fields: [providerId], references: [id])
   category      Category  @relation(fields: [categoryId], references: [id])
   bookings      Booking[]
   reviews       Review[]
@@ -88,6 +109,7 @@ model Booking {
   id            String        @id @default(cuid())
   farmerId      String
   equipmentId   String
+  providerId    String?
   status        BookingStatus @default(PENDING)
   startDate     DateTime
   endDate       DateTime
@@ -97,6 +119,7 @@ model Booking {
 
   // Relations
   farmer        User          @relation("FarmerBookings", fields: [farmerId], references: [id])
+  provider      Provider?     @relation("ProviderBookings", fields: [providerId], references: [id])
   equipment     Equipment     @relation(fields: [equipmentId], references: [id])
 }
 
@@ -104,23 +127,27 @@ model Review {
   id          String   @id @default(cuid())
   rating      Int      // 1-5
   comment     String?
-  userId      String
+  userId      String?
+  providerId  String?
   equipmentId String
   createdAt   DateTime @default(now())
 
-  user        User     @relation(fields: [userId], references: [id])
+  user        User?     @relation(fields: [userId], references: [id])
+  provider    Provider? @relation(fields: [providerId], references: [id])
   equipment   Equipment @relation(fields: [equipmentId], references: [id])
 }
 
 model AIQuery {
   id          String        @id @default(cuid())
-  userId      String
+  userId      String?
+  providerId  String?
   prompt      String
   response    String
   featureType AIFeatureType
   createdAt   DateTime      @default(now())
 
-  user        User          @relation(fields: [userId], references: [id])
+  user        User?         @relation(fields: [userId], references: [id])
+  provider    Provider?     @relation(fields: [providerId], references: [id])
 }
 
 enum BlogCategory {
@@ -148,22 +175,26 @@ model Blog {
   image       String?
   category    BlogCategory @default(OTHER)
   status      BlogStatus   @default(DRAFT)
-  authorId    String
+  authorId    String?
+  providerId  String?
   authorName  String
   authorEmail String
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
 
-  author      User         @relation(fields: [authorId], references: [id])
+  author      User?         @relation(fields: [authorId], references: [id])
+  provider    Provider?     @relation(fields: [providerId], references: [id])
 }
 
 model Notification {
   id          String   @id @default(cuid())
-  userId      String
+  userId      String?
+  providerId  String?
   title       String
   message     String
   isRead      Boolean  @default(false)
   createdAt   DateTime @default(now())
 
-  user        User     @relation(fields: [userId], references: [id])
+  user        User?     @relation(fields: [userId], references: [id])
+  provider    Provider? @relation(fields: [providerId], references: [id])
 }

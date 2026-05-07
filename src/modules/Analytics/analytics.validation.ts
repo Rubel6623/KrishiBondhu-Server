@@ -1,6 +1,12 @@
-import { MAX_UPLOAD_SIZE } from '../../constants';
-// import { z } from 'zod';
+import { z } from 'zod';
 
-export const analyticsValidationSchema = {
-    // Add validation schemas here
-    };
+const getStatsQuerySchema = z.object({
+  query: z.object({
+    startDate: z.string().optional(),
+    endDate: z.string().optional(),
+  }),
+});
+
+export const AnalyticsValidation = {
+  getStatsQuerySchema,
+};

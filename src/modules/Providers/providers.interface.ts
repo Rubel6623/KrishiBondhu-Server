@@ -1,3 +1,6 @@
-export type TProviders = {
-    // Add interface properties here
-    };
+export interface IProviderFilterRequest {
+  searchTerm?: string;
+  location?: string;
+  page?: number;
+  limit?: number;
+}

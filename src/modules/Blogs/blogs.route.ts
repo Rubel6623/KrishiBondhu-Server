@@ -1,33 +1,43 @@
 import express from 'express';
 import { BlogsController } from './blogs.controller';
-import auth from '../../middlewares/auth';
-import { Role } from '../../generated/prisma/client';
+import auth, { UserRole } from '../../middlewares/auth';
 import validateRequest from '../../middlewares/validateRequest';
 import { blogValidationSchema } from './blogs.validation';
 
 const router = express.Router();
 
-router.get('/', BlogsController.getAllBlogsController);
+router.get(
+    "/",
+    BlogsController.getAllBlogsController
+);
 
-router.get('/:id', BlogsController.getBlogByIdController);
+router.get(
+    "/:id",
+    BlogsController.getBlogByIdController
+);
+
+router.get(
+    "/slug/:slug",
+    BlogsController.getBlogBySlugController
+);
 
 router.post(
     '/',
-    auth(Role.ADMIN),
+    auth(UserRole.ADMIN),
     validateRequest(blogValidationSchema.createBlogSchema),
     BlogsController.createBlogController
 );
 
 router.patch(
-    ('/:id'),
-    auth(Role.ADMIN),
+    '/:id',
+    auth(UserRole.ADMIN),
     validateRequest(blogValidationSchema.updateBlogSchema),
     BlogsController.updateBlogController
 );
 
 router.delete(
     '/:id',
-    auth(Role.ADMIN),
+    auth(UserRole.ADMIN),
     BlogsController.deleteBlogController
 );
 

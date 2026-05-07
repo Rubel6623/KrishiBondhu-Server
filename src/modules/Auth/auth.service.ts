@@ -26,23 +26,45 @@ interface ISocialLoginPayload {
 const createUserIntoDB = async (payload: IRegisterPayload) => {
   const hashPassword = await bcrypt.hash(payload.password, 8);
 
-  const result = await prisma.user.create({
-    data: {
-      ...payload,
-      password: hashPassword,
-      role: payload.role as Role,
-    },
-  });
-  const { password, ...newResult } = result;
-  return newResult;
+  if (payload.role === Role.PROVIDER) {
+    const result = await prisma.provider.create({
+      data: {
+        ...payload,
+        password: hashPassword,
+        role: payload.role as Role,
+      },
+    });
+    const { password, ...newResult } = result;
+    return newResult;
+  } else {
+    const result = await prisma.user.create({
+      data: {
+        ...payload,
+        password: hashPassword,
+        role: payload.role as Role,
+      },
+    });
+    const { password, ...newResult } = result;
+    return newResult;
+  }
 };
 
 const loginUserIntoDB = async (payload: ILoginPayload) => {
-  const user = await prisma.user.findUniqueOrThrow({
-    where: {
-      email: payload.email,
-    },
+  let user: any = await prisma.user.findUnique({
+    where: { email: payload.email },
   });
+
+  let isProvider = false;
+
+  if (!user) {
+    user = await prisma.provider.findUnique({
+      where: { email: payload.email },
+    });
+    if (!user) {
+      throw new Error("Invalid credentials");
+    }
+    isProvider = true;
+  }
 
   const isPasswordValid = await bcrypt.compare(payload.password, user.password);
 
@@ -68,11 +90,15 @@ const loginUserIntoDB = async (payload: ILoginPayload) => {
 };
 
 const socialLoginIntoDB = async (payload: ISocialLoginPayload) => {
-  let user = await prisma.user.findUnique({
-    where: {
-      email: payload.email,
-    },
+  let user: any = await prisma.user.findUnique({
+    where: { email: payload.email },
   });
+
+  if (!user) {
+    user = await prisma.provider.findUnique({
+      where: { email: payload.email },
+    });
+  }
 
   if (!user) {
     // Create user if not exists
@@ -105,7 +131,7 @@ const socialLoginIntoDB = async (payload: ISocialLoginPayload) => {
 };
 
 const getMeFromDB = async (userId: string) => {
-  const result = await prisma.user.findUnique({
+  let result: any = await prisma.user.findUnique({
     where: { id: userId },
     select: {
       id: true,
@@ -119,6 +145,23 @@ const getMeFromDB = async (userId: string) => {
       createdAt: true,
     },
   });
+
+  if (!result) {
+    result = await prisma.provider.findUnique({
+      where: { id: userId },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        role: true,
+        avatar: true,
+        phone: true,
+        location: true,
+        isVerified: true,
+        createdAt: true,
+      },
+    });
+  }
   return result;
 };
 
@@ -126,21 +169,39 @@ const updateMeInDB = async (
   userId: string,
   payload: Partial<IRegisterPayload>
 ) => {
-  const result = await prisma.user.update({
-    where: { id: userId },
-    data: payload,
-    select: {
-      id: true,
-      name: true,
-      email: true,
-      role: true,
-      avatar: true,
-      phone: true,
-      location: true,
-      createdAt: true,
-    },
-  });
-  return result;
+  let user: any = await prisma.user.findUnique({ where: { id: userId } });
+  
+  if (user) {
+    return await prisma.user.update({
+      where: { id: userId },
+      data: payload,
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        role: true,
+        avatar: true,
+        phone: true,
+        location: true,
+        createdAt: true,
+      },
+    });
+  } else {
+    return await prisma.provider.update({
+      where: { id: userId },
+      data: payload,
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        role: true,
+        avatar: true,
+        phone: true,
+        location: true,
+        createdAt: true,
+      },
+    });
+  }
 };
 
 export const AuthService = {

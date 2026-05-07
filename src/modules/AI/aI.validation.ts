@@ -1,6 +1,17 @@
-import { MAX_UPLOAD_SIZE } from '../../constants';
-// import { z } from 'zod';
+import { z } from 'zod';
+import { AIFeatureType } from '../../generated/prisma/client';
 
-export const aIValidationSchema = {
-    // Add validation schemas here
-    };
+const createAIQuerySchema = z.object({
+  body: z.object({
+    prompt: z.string({
+      message: "Prompt is required",
+    }),
+    featureType: z.nativeEnum(AIFeatureType, {
+      message: "Feature type is required",
+    }),
+  }),
+});
+
+export const AIValidation = {
+  createAIQuerySchema,
+};

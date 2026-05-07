@@ -1,3 +1,3 @@
 export const UserSearchableFields = [
-    // Add searchable fields here
-    ];
+  // Add searchable fields here
+];

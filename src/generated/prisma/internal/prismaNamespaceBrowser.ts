@@ -52,6 +52,7 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   User: 'User',
+  Provider: 'Provider',
   Equipment: 'Equipment',
   Category: 'Category',
   Booking: 'Booking',
@@ -94,6 +95,23 @@ export const UserScalarFieldEnum = {
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
+export const ProviderScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  password: 'password',
+  phone: 'phone',
+  location: 'location',
+  avatar: 'avatar',
+  role: 'role',
+  isVerified: 'isVerified',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ProviderScalarFieldEnum = (typeof ProviderScalarFieldEnum)[keyof typeof ProviderScalarFieldEnum]
+
+
 export const EquipmentScalarFieldEnum = {
   id: 'id',
   title: 'title',
@@ -126,6 +144,7 @@ export const BookingScalarFieldEnum = {
   id: 'id',
   farmerId: 'farmerId',
   equipmentId: 'equipmentId',
+  providerId: 'providerId',
   status: 'status',
   startDate: 'startDate',
   endDate: 'endDate',
@@ -142,6 +161,7 @@ export const ReviewScalarFieldEnum = {
   rating: 'rating',
   comment: 'comment',
   userId: 'userId',
+  providerId: 'providerId',
   equipmentId: 'equipmentId',
   createdAt: 'createdAt'
 } as const
@@ -152,6 +172,7 @@ export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof 
 export const AIQueryScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
+  providerId: 'providerId',
   prompt: 'prompt',
   response: 'response',
   featureType: 'featureType',
@@ -171,6 +192,7 @@ export const BlogScalarFieldEnum = {
   category: 'category',
   status: 'status',
   authorId: 'authorId',
+  providerId: 'providerId',
   authorName: 'authorName',
   authorEmail: 'authorEmail',
   createdAt: 'createdAt',
@@ -183,6 +205,7 @@ export type BlogScalarFieldEnum = (typeof BlogScalarFieldEnum)[keyof typeof Blog
 export const NotificationScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
+  providerId: 'providerId',
   title: 'title',
   message: 'message',
   isRead: 'isRead',

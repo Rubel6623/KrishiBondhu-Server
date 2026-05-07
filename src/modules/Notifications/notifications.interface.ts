@@ -1,3 +1,14 @@
-export type TNotifications = {
-    // Add interface properties here
-    };
+export interface INotification {
+  id: string;
+  userId: string;
+  title: string;
+  message: string;
+  isRead: boolean;
+  createdAt: Date;
+}
+
+export interface ICreateNotificationInput {
+  userId: string;
+  title: string;
+  message: string;
+}

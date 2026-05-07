@@ -1,6 +1,14 @@
-import { MAX_UPLOAD_SIZE } from '../../constants';
-// import { z } from 'zod';
+import { z } from 'zod';
 
-export const userValidationSchema = {
-    // Add validation schemas here
-    };
+const updateProfileSchema = z.object({
+  body: z.object({
+    name: z.string().optional(),
+    phone: z.string().optional(),
+    location: z.string().optional(),
+    avatar: z.string().url().optional(),
+  }),
+});
+
+export const UserValidation = {
+  updateProfileSchema,
+};

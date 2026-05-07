@@ -27,6 +27,7 @@ export type AggregateAIQuery = {
 export type AIQueryMinAggregateOutputType = {
   id: string | null
   userId: string | null
+  providerId: string | null
   prompt: string | null
   response: string | null
   featureType: $Enums.AIFeatureType | null
@@ -36,6 +37,7 @@ export type AIQueryMinAggregateOutputType = {
 export type AIQueryMaxAggregateOutputType = {
   id: string | null
   userId: string | null
+  providerId: string | null
   prompt: string | null
   response: string | null
   featureType: $Enums.AIFeatureType | null
@@ -45,6 +47,7 @@ export type AIQueryMaxAggregateOutputType = {
 export type AIQueryCountAggregateOutputType = {
   id: number
   userId: number
+  providerId: number
   prompt: number
   response: number
   featureType: number
@@ -56,6 +59,7 @@ export type AIQueryCountAggregateOutputType = {
 export type AIQueryMinAggregateInputType = {
   id?: true
   userId?: true
+  providerId?: true
   prompt?: true
   response?: true
   featureType?: true
@@ -65,6 +69,7 @@ export type AIQueryMinAggregateInputType = {
 export type AIQueryMaxAggregateInputType = {
   id?: true
   userId?: true
+  providerId?: true
   prompt?: true
   response?: true
   featureType?: true
@@ -74,6 +79,7 @@ export type AIQueryMaxAggregateInputType = {
 export type AIQueryCountAggregateInputType = {
   id?: true
   userId?: true
+  providerId?: true
   prompt?: true
   response?: true
   featureType?: true
@@ -155,7 +161,8 @@ export type AIQueryGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 
 export type AIQueryGroupByOutputType = {
   id: string
-  userId: string
+  userId: string | null
+  providerId: string | null
   prompt: string
   response: string
   featureType: $Enums.AIFeatureType
@@ -185,22 +192,26 @@ export type AIQueryWhereInput = {
   OR?: Prisma.AIQueryWhereInput[]
   NOT?: Prisma.AIQueryWhereInput | Prisma.AIQueryWhereInput[]
   id?: Prisma.StringFilter<"AIQuery"> | string
-  userId?: Prisma.StringFilter<"AIQuery"> | string
+  userId?: Prisma.StringNullableFilter<"AIQuery"> | string | null
+  providerId?: Prisma.StringNullableFilter<"AIQuery"> | string | null
   prompt?: Prisma.StringFilter<"AIQuery"> | string
   response?: Prisma.StringFilter<"AIQuery"> | string
   featureType?: Prisma.EnumAIFeatureTypeFilter<"AIQuery"> | $Enums.AIFeatureType
   createdAt?: Prisma.DateTimeFilter<"AIQuery"> | Date | string
-  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  user?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  provider?: Prisma.XOR<Prisma.ProviderNullableScalarRelationFilter, Prisma.ProviderWhereInput> | null
 }
 
 export type AIQueryOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
+  userId?: Prisma.SortOrderInput | Prisma.SortOrder
+  providerId?: Prisma.SortOrderInput | Prisma.SortOrder
   prompt?: Prisma.SortOrder
   response?: Prisma.SortOrder
   featureType?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
+  provider?: Prisma.ProviderOrderByWithRelationInput
 }
 
 export type AIQueryWhereUniqueInput = Prisma.AtLeast<{
@@ -208,17 +219,20 @@ export type AIQueryWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.AIQueryWhereInput | Prisma.AIQueryWhereInput[]
   OR?: Prisma.AIQueryWhereInput[]
   NOT?: Prisma.AIQueryWhereInput | Prisma.AIQueryWhereInput[]
-  userId?: Prisma.StringFilter<"AIQuery"> | string
+  userId?: Prisma.StringNullableFilter<"AIQuery"> | string | null
+  providerId?: Prisma.StringNullableFilter<"AIQuery"> | string | null
   prompt?: Prisma.StringFilter<"AIQuery"> | string
   response?: Prisma.StringFilter<"AIQuery"> | string
   featureType?: Prisma.EnumAIFeatureTypeFilter<"AIQuery"> | $Enums.AIFeatureType
   createdAt?: Prisma.DateTimeFilter<"AIQuery"> | Date | string
-  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  user?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  provider?: Prisma.XOR<Prisma.ProviderNullableScalarRelationFilter, Prisma.ProviderWhereInput> | null
 }, "id">
 
 export type AIQueryOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
+  userId?: Prisma.SortOrderInput | Prisma.SortOrder
+  providerId?: Prisma.SortOrderInput | Prisma.SortOrder
   prompt?: Prisma.SortOrder
   response?: Prisma.SortOrder
   featureType?: Prisma.SortOrder
@@ -233,7 +247,8 @@ export type AIQueryScalarWhereWithAggregatesInput = {
   OR?: Prisma.AIQueryScalarWhereWithAggregatesInput[]
   NOT?: Prisma.AIQueryScalarWhereWithAggregatesInput | Prisma.AIQueryScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"AIQuery"> | string
-  userId?: Prisma.StringWithAggregatesFilter<"AIQuery"> | string
+  userId?: Prisma.StringNullableWithAggregatesFilter<"AIQuery"> | string | null
+  providerId?: Prisma.StringNullableWithAggregatesFilter<"AIQuery"> | string | null
   prompt?: Prisma.StringWithAggregatesFilter<"AIQuery"> | string
   response?: Prisma.StringWithAggregatesFilter<"AIQuery"> | string
   featureType?: Prisma.EnumAIFeatureTypeWithAggregatesFilter<"AIQuery"> | $Enums.AIFeatureType
@@ -246,12 +261,14 @@ export type AIQueryCreateInput = {
   response: string
   featureType: $Enums.AIFeatureType
   createdAt?: Date | string
-  user: Prisma.UserCreateNestedOneWithoutAiQueriesInput
+  user?: Prisma.UserCreateNestedOneWithoutAiQueriesInput
+  provider?: Prisma.ProviderCreateNestedOneWithoutAiQueriesInput
 }
 
 export type AIQueryUncheckedCreateInput = {
   id?: string
-  userId: string
+  userId?: string | null
+  providerId?: string | null
   prompt: string
   response: string
   featureType: $Enums.AIFeatureType
@@ -264,12 +281,14 @@ export type AIQueryUpdateInput = {
   response?: Prisma.StringFieldUpdateOperationsInput | string
   featureType?: Prisma.EnumAIFeatureTypeFieldUpdateOperationsInput | $Enums.AIFeatureType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  user?: Prisma.UserUpdateOneRequiredWithoutAiQueriesNestedInput
+  user?: Prisma.UserUpdateOneWithoutAiQueriesNestedInput
+  provider?: Prisma.ProviderUpdateOneWithoutAiQueriesNestedInput
 }
 
 export type AIQueryUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  providerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prompt?: Prisma.StringFieldUpdateOperationsInput | string
   response?: Prisma.StringFieldUpdateOperationsInput | string
   featureType?: Prisma.EnumAIFeatureTypeFieldUpdateOperationsInput | $Enums.AIFeatureType
@@ -278,7 +297,8 @@ export type AIQueryUncheckedUpdateInput = {
 
 export type AIQueryCreateManyInput = {
   id?: string
-  userId: string
+  userId?: string | null
+  providerId?: string | null
   prompt: string
   response: string
   featureType: $Enums.AIFeatureType
@@ -295,7 +315,8 @@ export type AIQueryUpdateManyMutationInput = {
 
 export type AIQueryUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  providerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prompt?: Prisma.StringFieldUpdateOperationsInput | string
   response?: Prisma.StringFieldUpdateOperationsInput | string
   featureType?: Prisma.EnumAIFeatureTypeFieldUpdateOperationsInput | $Enums.AIFeatureType
@@ -315,6 +336,7 @@ export type AIQueryOrderByRelationAggregateInput = {
 export type AIQueryCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  providerId?: Prisma.SortOrder
   prompt?: Prisma.SortOrder
   response?: Prisma.SortOrder
   featureType?: Prisma.SortOrder
@@ -324,6 +346,7 @@ export type AIQueryCountOrderByAggregateInput = {
 export type AIQueryMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  providerId?: Prisma.SortOrder
   prompt?: Prisma.SortOrder
   response?: Prisma.SortOrder
   featureType?: Prisma.SortOrder
@@ -333,6 +356,7 @@ export type AIQueryMaxOrderByAggregateInput = {
 export type AIQueryMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  providerId?: Prisma.SortOrder
   prompt?: Prisma.SortOrder
   response?: Prisma.SortOrder
   featureType?: Prisma.SortOrder
@@ -381,6 +405,48 @@ export type AIQueryUncheckedUpdateManyWithoutUserNestedInput = {
   deleteMany?: Prisma.AIQueryScalarWhereInput | Prisma.AIQueryScalarWhereInput[]
 }
 
+export type AIQueryCreateNestedManyWithoutProviderInput = {
+  create?: Prisma.XOR<Prisma.AIQueryCreateWithoutProviderInput, Prisma.AIQueryUncheckedCreateWithoutProviderInput> | Prisma.AIQueryCreateWithoutProviderInput[] | Prisma.AIQueryUncheckedCreateWithoutProviderInput[]
+  connectOrCreate?: Prisma.AIQueryCreateOrConnectWithoutProviderInput | Prisma.AIQueryCreateOrConnectWithoutProviderInput[]
+  createMany?: Prisma.AIQueryCreateManyProviderInputEnvelope
+  connect?: Prisma.AIQueryWhereUniqueInput | Prisma.AIQueryWhereUniqueInput[]
+}
+
+export type AIQueryUncheckedCreateNestedManyWithoutProviderInput = {
+  create?: Prisma.XOR<Prisma.AIQueryCreateWithoutProviderInput, Prisma.AIQueryUncheckedCreateWithoutProviderInput> | Prisma.AIQueryCreateWithoutProviderInput[] | Prisma.AIQueryUncheckedCreateWithoutProviderInput[]
+  connectOrCreate?: Prisma.AIQueryCreateOrConnectWithoutProviderInput | Prisma.AIQueryCreateOrConnectWithoutProviderInput[]
+  createMany?: Prisma.AIQueryCreateManyProviderInputEnvelope
+  connect?: Prisma.AIQueryWhereUniqueInput | Prisma.AIQueryWhereUniqueInput[]
+}
+
+export type AIQueryUpdateManyWithoutProviderNestedInput = {
+  create?: Prisma.XOR<Prisma.AIQueryCreateWithoutProviderInput, Prisma.AIQueryUncheckedCreateWithoutProviderInput> | Prisma.AIQueryCreateWithoutProviderInput[] | Prisma.AIQueryUncheckedCreateWithoutProviderInput[]
+  connectOrCreate?: Prisma.AIQueryCreateOrConnectWithoutProviderInput | Prisma.AIQueryCreateOrConnectWithoutProviderInput[]
+  upsert?: Prisma.AIQueryUpsertWithWhereUniqueWithoutProviderInput | Prisma.AIQueryUpsertWithWhereUniqueWithoutProviderInput[]
+  createMany?: Prisma.AIQueryCreateManyProviderInputEnvelope
+  set?: Prisma.AIQueryWhereUniqueInput | Prisma.AIQueryWhereUniqueInput[]
+  disconnect?: Prisma.AIQueryWhereUniqueInput | Prisma.AIQueryWhereUniqueInput[]
+  delete?: Prisma.AIQueryWhereUniqueInput | Prisma.AIQueryWhereUniqueInput[]
+  connect?: Prisma.AIQueryWhereUniqueInput | Prisma.AIQueryWhereUniqueInput[]
+  update?: Prisma.AIQueryUpdateWithWhereUniqueWithoutProviderInput | Prisma.AIQueryUpdateWithWhereUniqueWithoutProviderInput[]
+  updateMany?: Prisma.AIQueryUpdateManyWithWhereWithoutProviderInput | Prisma.AIQueryUpdateManyWithWhereWithoutProviderInput[]
+  deleteMany?: Prisma.AIQueryScalarWhereInput | Prisma.AIQueryScalarWhereInput[]
+}
+
+export type AIQueryUncheckedUpdateManyWithoutProviderNestedInput = {
+  create?: Prisma.XOR<Prisma.AIQueryCreateWithoutProviderInput, Prisma.AIQueryUncheckedCreateWithoutProviderInput> | Prisma.AIQueryCreateWithoutProviderInput[] | Prisma.AIQueryUncheckedCreateWithoutProviderInput[]
+  connectOrCreate?: Prisma.AIQueryCreateOrConnectWithoutProviderInput | Prisma.AIQueryCreateOrConnectWithoutProviderInput[]
+  upsert?: Prisma.AIQueryUpsertWithWhereUniqueWithoutProviderInput | Prisma.AIQueryUpsertWithWhereUniqueWithoutProviderInput[]
+  createMany?: Prisma.AIQueryCreateManyProviderInputEnvelope
+  set?: Prisma.AIQueryWhereUniqueInput | Prisma.AIQueryWhereUniqueInput[]
+  disconnect?: Prisma.AIQueryWhereUniqueInput | Prisma.AIQueryWhereUniqueInput[]
+  delete?: Prisma.AIQueryWhereUniqueInput | Prisma.AIQueryWhereUniqueInput[]
+  connect?: Prisma.AIQueryWhereUniqueInput | Prisma.AIQueryWhereUniqueInput[]
+  update?: Prisma.AIQueryUpdateWithWhereUniqueWithoutProviderInput | Prisma.AIQueryUpdateWithWhereUniqueWithoutProviderInput[]
+  updateMany?: Prisma.AIQueryUpdateManyWithWhereWithoutProviderInput | Prisma.AIQueryUpdateManyWithWhereWithoutProviderInput[]
+  deleteMany?: Prisma.AIQueryScalarWhereInput | Prisma.AIQueryScalarWhereInput[]
+}
+
 export type EnumAIFeatureTypeFieldUpdateOperationsInput = {
   set?: $Enums.AIFeatureType
 }
@@ -391,10 +457,12 @@ export type AIQueryCreateWithoutUserInput = {
   response: string
   featureType: $Enums.AIFeatureType
   createdAt?: Date | string
+  provider?: Prisma.ProviderCreateNestedOneWithoutAiQueriesInput
 }
 
 export type AIQueryUncheckedCreateWithoutUserInput = {
   id?: string
+  providerId?: string | null
   prompt: string
   response: string
   featureType: $Enums.AIFeatureType
@@ -432,15 +500,61 @@ export type AIQueryScalarWhereInput = {
   OR?: Prisma.AIQueryScalarWhereInput[]
   NOT?: Prisma.AIQueryScalarWhereInput | Prisma.AIQueryScalarWhereInput[]
   id?: Prisma.StringFilter<"AIQuery"> | string
-  userId?: Prisma.StringFilter<"AIQuery"> | string
+  userId?: Prisma.StringNullableFilter<"AIQuery"> | string | null
+  providerId?: Prisma.StringNullableFilter<"AIQuery"> | string | null
   prompt?: Prisma.StringFilter<"AIQuery"> | string
   response?: Prisma.StringFilter<"AIQuery"> | string
   featureType?: Prisma.EnumAIFeatureTypeFilter<"AIQuery"> | $Enums.AIFeatureType
   createdAt?: Prisma.DateTimeFilter<"AIQuery"> | Date | string
 }
 
+export type AIQueryCreateWithoutProviderInput = {
+  id?: string
+  prompt: string
+  response: string
+  featureType: $Enums.AIFeatureType
+  createdAt?: Date | string
+  user?: Prisma.UserCreateNestedOneWithoutAiQueriesInput
+}
+
+export type AIQueryUncheckedCreateWithoutProviderInput = {
+  id?: string
+  userId?: string | null
+  prompt: string
+  response: string
+  featureType: $Enums.AIFeatureType
+  createdAt?: Date | string
+}
+
+export type AIQueryCreateOrConnectWithoutProviderInput = {
+  where: Prisma.AIQueryWhereUniqueInput
+  create: Prisma.XOR<Prisma.AIQueryCreateWithoutProviderInput, Prisma.AIQueryUncheckedCreateWithoutProviderInput>
+}
+
+export type AIQueryCreateManyProviderInputEnvelope = {
+  data: Prisma.AIQueryCreateManyProviderInput | Prisma.AIQueryCreateManyProviderInput[]
+  skipDuplicates?: boolean
+}
+
+export type AIQueryUpsertWithWhereUniqueWithoutProviderInput = {
+  where: Prisma.AIQueryWhereUniqueInput
+  update: Prisma.XOR<Prisma.AIQueryUpdateWithoutProviderInput, Prisma.AIQueryUncheckedUpdateWithoutProviderInput>
+  create: Prisma.XOR<Prisma.AIQueryCreateWithoutProviderInput, Prisma.AIQueryUncheckedCreateWithoutProviderInput>
+}
+
+export type AIQueryUpdateWithWhereUniqueWithoutProviderInput = {
+  where: Prisma.AIQueryWhereUniqueInput
+  data: Prisma.XOR<Prisma.AIQueryUpdateWithoutProviderInput, Prisma.AIQueryUncheckedUpdateWithoutProviderInput>
+}
+
+export type AIQueryUpdateManyWithWhereWithoutProviderInput = {
+  where: Prisma.AIQueryScalarWhereInput
+  data: Prisma.XOR<Prisma.AIQueryUpdateManyMutationInput, Prisma.AIQueryUncheckedUpdateManyWithoutProviderInput>
+}
+
 export type AIQueryCreateManyUserInput = {
   id?: string
+  providerId?: string | null
   prompt: string
   response: string
   featureType: $Enums.AIFeatureType
@@ -453,10 +567,12 @@ export type AIQueryUpdateWithoutUserInput = {
   response?: Prisma.StringFieldUpdateOperationsInput | string
   featureType?: Prisma.EnumAIFeatureTypeFieldUpdateOperationsInput | $Enums.AIFeatureType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  provider?: Prisma.ProviderUpdateOneWithoutAiQueriesNestedInput
 }
 
 export type AIQueryUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  providerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prompt?: Prisma.StringFieldUpdateOperationsInput | string
   response?: Prisma.StringFieldUpdateOperationsInput | string
   featureType?: Prisma.EnumAIFeatureTypeFieldUpdateOperationsInput | $Enums.AIFeatureType
@@ -465,6 +581,43 @@ export type AIQueryUncheckedUpdateWithoutUserInput = {
 
 export type AIQueryUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  providerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prompt?: Prisma.StringFieldUpdateOperationsInput | string
+  response?: Prisma.StringFieldUpdateOperationsInput | string
+  featureType?: Prisma.EnumAIFeatureTypeFieldUpdateOperationsInput | $Enums.AIFeatureType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type AIQueryCreateManyProviderInput = {
+  id?: string
+  userId?: string | null
+  prompt: string
+  response: string
+  featureType: $Enums.AIFeatureType
+  createdAt?: Date | string
+}
+
+export type AIQueryUpdateWithoutProviderInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  prompt?: Prisma.StringFieldUpdateOperationsInput | string
+  response?: Prisma.StringFieldUpdateOperationsInput | string
+  featureType?: Prisma.EnumAIFeatureTypeFieldUpdateOperationsInput | $Enums.AIFeatureType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneWithoutAiQueriesNestedInput
+}
+
+export type AIQueryUncheckedUpdateWithoutProviderInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prompt?: Prisma.StringFieldUpdateOperationsInput | string
+  response?: Prisma.StringFieldUpdateOperationsInput | string
+  featureType?: Prisma.EnumAIFeatureTypeFieldUpdateOperationsInput | $Enums.AIFeatureType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type AIQueryUncheckedUpdateManyWithoutProviderInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   prompt?: Prisma.StringFieldUpdateOperationsInput | string
   response?: Prisma.StringFieldUpdateOperationsInput | string
   featureType?: Prisma.EnumAIFeatureTypeFieldUpdateOperationsInput | $Enums.AIFeatureType
@@ -476,61 +629,73 @@ export type AIQueryUncheckedUpdateManyWithoutUserInput = {
 export type AIQuerySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   userId?: boolean
+  providerId?: boolean
   prompt?: boolean
   response?: boolean
   featureType?: boolean
   createdAt?: boolean
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.AIQuery$userArgs<ExtArgs>
+  provider?: boolean | Prisma.AIQuery$providerArgs<ExtArgs>
 }, ExtArgs["result"]["aIQuery"]>
 
 export type AIQuerySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   userId?: boolean
+  providerId?: boolean
   prompt?: boolean
   response?: boolean
   featureType?: boolean
   createdAt?: boolean
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.AIQuery$userArgs<ExtArgs>
+  provider?: boolean | Prisma.AIQuery$providerArgs<ExtArgs>
 }, ExtArgs["result"]["aIQuery"]>
 
 export type AIQuerySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   userId?: boolean
+  providerId?: boolean
   prompt?: boolean
   response?: boolean
   featureType?: boolean
   createdAt?: boolean
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.AIQuery$userArgs<ExtArgs>
+  provider?: boolean | Prisma.AIQuery$providerArgs<ExtArgs>
 }, ExtArgs["result"]["aIQuery"]>
 
 export type AIQuerySelectScalar = {
   id?: boolean
   userId?: boolean
+  providerId?: boolean
   prompt?: boolean
   response?: boolean
   featureType?: boolean
   createdAt?: boolean
 }
 
-export type AIQueryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "prompt" | "response" | "featureType" | "createdAt", ExtArgs["result"]["aIQuery"]>
+export type AIQueryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "providerId" | "prompt" | "response" | "featureType" | "createdAt", ExtArgs["result"]["aIQuery"]>
 export type AIQueryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.AIQuery$userArgs<ExtArgs>
+  provider?: boolean | Prisma.AIQuery$providerArgs<ExtArgs>
 }
 export type AIQueryIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.AIQuery$userArgs<ExtArgs>
+  provider?: boolean | Prisma.AIQuery$providerArgs<ExtArgs>
 }
 export type AIQueryIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.AIQuery$userArgs<ExtArgs>
+  provider?: boolean | Prisma.AIQuery$providerArgs<ExtArgs>
 }
 
 export type $AIQueryPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "AIQuery"
   objects: {
-    user: Prisma.$UserPayload<ExtArgs>
+    user: Prisma.$UserPayload<ExtArgs> | null
+    provider: Prisma.$ProviderPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    userId: string
+    userId: string | null
+    providerId: string | null
     prompt: string
     response: string
     featureType: $Enums.AIFeatureType
@@ -929,7 +1094,8 @@ readonly fields: AIQueryFieldRefs;
  */
 export interface Prisma__AIQueryClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  user<T extends Prisma.AIQuery$userArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AIQuery$userArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  provider<T extends Prisma.AIQuery$providerArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AIQuery$providerArgs<ExtArgs>>): Prisma.Prisma__ProviderClient<runtime.Types.Result.GetResult<Prisma.$ProviderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -961,6 +1127,7 @@ export interface Prisma__AIQueryClient<T, Null = never, ExtArgs extends runtime.
 export interface AIQueryFieldRefs {
   readonly id: Prisma.FieldRef<"AIQuery", 'String'>
   readonly userId: Prisma.FieldRef<"AIQuery", 'String'>
+  readonly providerId: Prisma.FieldRef<"AIQuery", 'String'>
   readonly prompt: Prisma.FieldRef<"AIQuery", 'String'>
   readonly response: Prisma.FieldRef<"AIQuery", 'String'>
   readonly featureType: Prisma.FieldRef<"AIQuery", 'AIFeatureType'>
@@ -1363,6 +1530,44 @@ export type AIQueryDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Limit how many AIQueries to delete.
    */
   limit?: number
+}
+
+/**
+ * AIQuery.user
+ */
+export type AIQuery$userArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
+}
+
+/**
+ * AIQuery.provider
+ */
+export type AIQuery$providerArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Provider
+   */
+  select?: Prisma.ProviderSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Provider
+   */
+  omit?: Prisma.ProviderOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProviderInclude<ExtArgs> | null
+  where?: Prisma.ProviderWhereInput
 }
 
 /**

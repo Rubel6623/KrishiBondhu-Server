@@ -230,7 +230,6 @@ export type UserWhereInput = {
   isVerified?: Prisma.BoolFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
-  equipment?: Prisma.EquipmentListRelationFilter
   bookingsAsFarmer?: Prisma.BookingListRelationFilter
   reviews?: Prisma.ReviewListRelationFilter
   aiQueries?: Prisma.AIQueryListRelationFilter
@@ -250,7 +249,6 @@ export type UserOrderByWithRelationInput = {
   isVerified?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  equipment?: Prisma.EquipmentOrderByRelationAggregateInput
   bookingsAsFarmer?: Prisma.BookingOrderByRelationAggregateInput
   reviews?: Prisma.ReviewOrderByRelationAggregateInput
   aiQueries?: Prisma.AIQueryOrderByRelationAggregateInput
@@ -273,7 +271,6 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   isVerified?: Prisma.BoolFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
-  equipment?: Prisma.EquipmentListRelationFilter
   bookingsAsFarmer?: Prisma.BookingListRelationFilter
   reviews?: Prisma.ReviewListRelationFilter
   aiQueries?: Prisma.AIQueryListRelationFilter
@@ -327,7 +324,6 @@ export type UserCreateInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  equipment?: Prisma.EquipmentCreateNestedManyWithoutProviderInput
   bookingsAsFarmer?: Prisma.BookingCreateNestedManyWithoutFarmerInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   aiQueries?: Prisma.AIQueryCreateNestedManyWithoutUserInput
@@ -347,7 +343,6 @@ export type UserUncheckedCreateInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  equipment?: Prisma.EquipmentUncheckedCreateNestedManyWithoutProviderInput
   bookingsAsFarmer?: Prisma.BookingUncheckedCreateNestedManyWithoutFarmerInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   aiQueries?: Prisma.AIQueryUncheckedCreateNestedManyWithoutUserInput
@@ -367,7 +362,6 @@ export type UserUpdateInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  equipment?: Prisma.EquipmentUpdateManyWithoutProviderNestedInput
   bookingsAsFarmer?: Prisma.BookingUpdateManyWithoutFarmerNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   aiQueries?: Prisma.AIQueryUpdateManyWithoutUserNestedInput
@@ -387,7 +381,6 @@ export type UserUncheckedUpdateInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  equipment?: Prisma.EquipmentUncheckedUpdateManyWithoutProviderNestedInput
   bookingsAsFarmer?: Prisma.BookingUncheckedUpdateManyWithoutFarmerNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   aiQueries?: Prisma.AIQueryUncheckedUpdateManyWithoutUserNestedInput
@@ -484,6 +477,11 @@ export type UserScalarRelationFilter = {
   isNot?: Prisma.UserWhereInput
 }
 
+export type UserNullableScalarRelationFilter = {
+  is?: Prisma.UserWhereInput | null
+  isNot?: Prisma.UserWhereInput | null
+}
+
 export type StringFieldUpdateOperationsInput = {
   set?: string
 }
@@ -502,20 +500,6 @@ export type BoolFieldUpdateOperationsInput = {
 
 export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
-}
-
-export type UserCreateNestedOneWithoutEquipmentInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutEquipmentInput, Prisma.UserUncheckedCreateWithoutEquipmentInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutEquipmentInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutEquipmentNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutEquipmentInput, Prisma.UserUncheckedCreateWithoutEquipmentInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutEquipmentInput
-  upsert?: Prisma.UserUpsertWithoutEquipmentInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutEquipmentInput, Prisma.UserUpdateWithoutEquipmentInput>, Prisma.UserUncheckedUpdateWithoutEquipmentInput>
 }
 
 export type UserCreateNestedOneWithoutBookingsAsFarmerInput = {
@@ -538,10 +522,12 @@ export type UserCreateNestedOneWithoutReviewsInput = {
   connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserUpdateOneRequiredWithoutReviewsNestedInput = {
+export type UserUpdateOneWithoutReviewsNestedInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutReviewsInput, Prisma.UserUncheckedCreateWithoutReviewsInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutReviewsInput
   upsert?: Prisma.UserUpsertWithoutReviewsInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutReviewsInput, Prisma.UserUpdateWithoutReviewsInput>, Prisma.UserUncheckedUpdateWithoutReviewsInput>
 }
@@ -552,10 +538,12 @@ export type UserCreateNestedOneWithoutAiQueriesInput = {
   connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserUpdateOneRequiredWithoutAiQueriesNestedInput = {
+export type UserUpdateOneWithoutAiQueriesNestedInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutAiQueriesInput, Prisma.UserUncheckedCreateWithoutAiQueriesInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutAiQueriesInput
   upsert?: Prisma.UserUpsertWithoutAiQueriesInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAiQueriesInput, Prisma.UserUpdateWithoutAiQueriesInput>, Prisma.UserUncheckedUpdateWithoutAiQueriesInput>
 }
@@ -566,10 +554,12 @@ export type UserCreateNestedOneWithoutBlogsInput = {
   connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserUpdateOneRequiredWithoutBlogsNestedInput = {
+export type UserUpdateOneWithoutBlogsNestedInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutBlogsInput, Prisma.UserUncheckedCreateWithoutBlogsInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutBlogsInput
   upsert?: Prisma.UserUpsertWithoutBlogsInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBlogsInput, Prisma.UserUpdateWithoutBlogsInput>, Prisma.UserUncheckedUpdateWithoutBlogsInput>
 }
@@ -580,104 +570,14 @@ export type UserCreateNestedOneWithoutNotificationsInput = {
   connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserUpdateOneRequiredWithoutNotificationsNestedInput = {
+export type UserUpdateOneWithoutNotificationsNestedInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationsInput, Prisma.UserUncheckedCreateWithoutNotificationsInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationsInput
   upsert?: Prisma.UserUpsertWithoutNotificationsInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutNotificationsInput, Prisma.UserUpdateWithoutNotificationsInput>, Prisma.UserUncheckedUpdateWithoutNotificationsInput>
-}
-
-export type UserCreateWithoutEquipmentInput = {
-  id?: string
-  name: string
-  email: string
-  password: string
-  phone?: string | null
-  location?: string | null
-  avatar?: string | null
-  role?: $Enums.Role
-  isVerified?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  bookingsAsFarmer?: Prisma.BookingCreateNestedManyWithoutFarmerInput
-  reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
-  aiQueries?: Prisma.AIQueryCreateNestedManyWithoutUserInput
-  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
-  blogs?: Prisma.BlogCreateNestedManyWithoutAuthorInput
-}
-
-export type UserUncheckedCreateWithoutEquipmentInput = {
-  id?: string
-  name: string
-  email: string
-  password: string
-  phone?: string | null
-  location?: string | null
-  avatar?: string | null
-  role?: $Enums.Role
-  isVerified?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  bookingsAsFarmer?: Prisma.BookingUncheckedCreateNestedManyWithoutFarmerInput
-  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
-  aiQueries?: Prisma.AIQueryUncheckedCreateNestedManyWithoutUserInput
-  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
-  blogs?: Prisma.BlogUncheckedCreateNestedManyWithoutAuthorInput
-}
-
-export type UserCreateOrConnectWithoutEquipmentInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutEquipmentInput, Prisma.UserUncheckedCreateWithoutEquipmentInput>
-}
-
-export type UserUpsertWithoutEquipmentInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutEquipmentInput, Prisma.UserUncheckedUpdateWithoutEquipmentInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutEquipmentInput, Prisma.UserUncheckedCreateWithoutEquipmentInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutEquipmentInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutEquipmentInput, Prisma.UserUncheckedUpdateWithoutEquipmentInput>
-}
-
-export type UserUpdateWithoutEquipmentInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  bookingsAsFarmer?: Prisma.BookingUpdateManyWithoutFarmerNestedInput
-  reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
-  aiQueries?: Prisma.AIQueryUpdateManyWithoutUserNestedInput
-  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
-  blogs?: Prisma.BlogUpdateManyWithoutAuthorNestedInput
-}
-
-export type UserUncheckedUpdateWithoutEquipmentInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  bookingsAsFarmer?: Prisma.BookingUncheckedUpdateManyWithoutFarmerNestedInput
-  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
-  aiQueries?: Prisma.AIQueryUncheckedUpdateManyWithoutUserNestedInput
-  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
-  blogs?: Prisma.BlogUncheckedUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserCreateWithoutBookingsAsFarmerInput = {
@@ -692,7 +592,6 @@ export type UserCreateWithoutBookingsAsFarmerInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  equipment?: Prisma.EquipmentCreateNestedManyWithoutProviderInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   aiQueries?: Prisma.AIQueryCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
@@ -711,7 +610,6 @@ export type UserUncheckedCreateWithoutBookingsAsFarmerInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  equipment?: Prisma.EquipmentUncheckedCreateNestedManyWithoutProviderInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   aiQueries?: Prisma.AIQueryUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
@@ -746,7 +644,6 @@ export type UserUpdateWithoutBookingsAsFarmerInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  equipment?: Prisma.EquipmentUpdateManyWithoutProviderNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   aiQueries?: Prisma.AIQueryUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
@@ -765,7 +662,6 @@ export type UserUncheckedUpdateWithoutBookingsAsFarmerInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  equipment?: Prisma.EquipmentUncheckedUpdateManyWithoutProviderNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   aiQueries?: Prisma.AIQueryUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -784,7 +680,6 @@ export type UserCreateWithoutReviewsInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  equipment?: Prisma.EquipmentCreateNestedManyWithoutProviderInput
   bookingsAsFarmer?: Prisma.BookingCreateNestedManyWithoutFarmerInput
   aiQueries?: Prisma.AIQueryCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
@@ -803,7 +698,6 @@ export type UserUncheckedCreateWithoutReviewsInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  equipment?: Prisma.EquipmentUncheckedCreateNestedManyWithoutProviderInput
   bookingsAsFarmer?: Prisma.BookingUncheckedCreateNestedManyWithoutFarmerInput
   aiQueries?: Prisma.AIQueryUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
@@ -838,7 +732,6 @@ export type UserUpdateWithoutReviewsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  equipment?: Prisma.EquipmentUpdateManyWithoutProviderNestedInput
   bookingsAsFarmer?: Prisma.BookingUpdateManyWithoutFarmerNestedInput
   aiQueries?: Prisma.AIQueryUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
@@ -857,7 +750,6 @@ export type UserUncheckedUpdateWithoutReviewsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  equipment?: Prisma.EquipmentUncheckedUpdateManyWithoutProviderNestedInput
   bookingsAsFarmer?: Prisma.BookingUncheckedUpdateManyWithoutFarmerNestedInput
   aiQueries?: Prisma.AIQueryUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -876,7 +768,6 @@ export type UserCreateWithoutAiQueriesInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  equipment?: Prisma.EquipmentCreateNestedManyWithoutProviderInput
   bookingsAsFarmer?: Prisma.BookingCreateNestedManyWithoutFarmerInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
@@ -895,7 +786,6 @@ export type UserUncheckedCreateWithoutAiQueriesInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  equipment?: Prisma.EquipmentUncheckedCreateNestedManyWithoutProviderInput
   bookingsAsFarmer?: Prisma.BookingUncheckedCreateNestedManyWithoutFarmerInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
@@ -930,7 +820,6 @@ export type UserUpdateWithoutAiQueriesInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  equipment?: Prisma.EquipmentUpdateManyWithoutProviderNestedInput
   bookingsAsFarmer?: Prisma.BookingUpdateManyWithoutFarmerNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
@@ -949,7 +838,6 @@ export type UserUncheckedUpdateWithoutAiQueriesInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  equipment?: Prisma.EquipmentUncheckedUpdateManyWithoutProviderNestedInput
   bookingsAsFarmer?: Prisma.BookingUncheckedUpdateManyWithoutFarmerNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -968,7 +856,6 @@ export type UserCreateWithoutBlogsInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  equipment?: Prisma.EquipmentCreateNestedManyWithoutProviderInput
   bookingsAsFarmer?: Prisma.BookingCreateNestedManyWithoutFarmerInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   aiQueries?: Prisma.AIQueryCreateNestedManyWithoutUserInput
@@ -987,7 +874,6 @@ export type UserUncheckedCreateWithoutBlogsInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  equipment?: Prisma.EquipmentUncheckedCreateNestedManyWithoutProviderInput
   bookingsAsFarmer?: Prisma.BookingUncheckedCreateNestedManyWithoutFarmerInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   aiQueries?: Prisma.AIQueryUncheckedCreateNestedManyWithoutUserInput
@@ -1022,7 +908,6 @@ export type UserUpdateWithoutBlogsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  equipment?: Prisma.EquipmentUpdateManyWithoutProviderNestedInput
   bookingsAsFarmer?: Prisma.BookingUpdateManyWithoutFarmerNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   aiQueries?: Prisma.AIQueryUpdateManyWithoutUserNestedInput
@@ -1041,7 +926,6 @@ export type UserUncheckedUpdateWithoutBlogsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  equipment?: Prisma.EquipmentUncheckedUpdateManyWithoutProviderNestedInput
   bookingsAsFarmer?: Prisma.BookingUncheckedUpdateManyWithoutFarmerNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   aiQueries?: Prisma.AIQueryUncheckedUpdateManyWithoutUserNestedInput
@@ -1060,7 +944,6 @@ export type UserCreateWithoutNotificationsInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  equipment?: Prisma.EquipmentCreateNestedManyWithoutProviderInput
   bookingsAsFarmer?: Prisma.BookingCreateNestedManyWithoutFarmerInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   aiQueries?: Prisma.AIQueryCreateNestedManyWithoutUserInput
@@ -1079,7 +962,6 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  equipment?: Prisma.EquipmentUncheckedCreateNestedManyWithoutProviderInput
   bookingsAsFarmer?: Prisma.BookingUncheckedCreateNestedManyWithoutFarmerInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
   aiQueries?: Prisma.AIQueryUncheckedCreateNestedManyWithoutUserInput
@@ -1114,7 +996,6 @@ export type UserUpdateWithoutNotificationsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  equipment?: Prisma.EquipmentUpdateManyWithoutProviderNestedInput
   bookingsAsFarmer?: Prisma.BookingUpdateManyWithoutFarmerNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   aiQueries?: Prisma.AIQueryUpdateManyWithoutUserNestedInput
@@ -1133,7 +1014,6 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  equipment?: Prisma.EquipmentUncheckedUpdateManyWithoutProviderNestedInput
   bookingsAsFarmer?: Prisma.BookingUncheckedUpdateManyWithoutFarmerNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   aiQueries?: Prisma.AIQueryUncheckedUpdateManyWithoutUserNestedInput
@@ -1146,7 +1026,6 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
  */
 
 export type UserCountOutputType = {
-  equipment: number
   bookingsAsFarmer: number
   reviews: number
   aiQueries: number
@@ -1155,7 +1034,6 @@ export type UserCountOutputType = {
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  equipment?: boolean | UserCountOutputTypeCountEquipmentArgs
   bookingsAsFarmer?: boolean | UserCountOutputTypeCountBookingsAsFarmerArgs
   reviews?: boolean | UserCountOutputTypeCountReviewsArgs
   aiQueries?: boolean | UserCountOutputTypeCountAiQueriesArgs
@@ -1171,13 +1049,6 @@ export type UserCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensi
    * Select specific fields to fetch from the UserCountOutputType
    */
   select?: Prisma.UserCountOutputTypeSelect<ExtArgs> | null
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountEquipmentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.EquipmentWhereInput
 }
 
 /**
@@ -1228,7 +1099,6 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   isVerified?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  equipment?: boolean | Prisma.User$equipmentArgs<ExtArgs>
   bookingsAsFarmer?: boolean | Prisma.User$bookingsAsFarmerArgs<ExtArgs>
   reviews?: boolean | Prisma.User$reviewsArgs<ExtArgs>
   aiQueries?: boolean | Prisma.User$aiQueriesArgs<ExtArgs>
@@ -1281,7 +1151,6 @@ export type UserSelectScalar = {
 
 export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "password" | "phone" | "location" | "avatar" | "role" | "isVerified" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  equipment?: boolean | Prisma.User$equipmentArgs<ExtArgs>
   bookingsAsFarmer?: boolean | Prisma.User$bookingsAsFarmerArgs<ExtArgs>
   reviews?: boolean | Prisma.User$reviewsArgs<ExtArgs>
   aiQueries?: boolean | Prisma.User$aiQueriesArgs<ExtArgs>
@@ -1295,7 +1164,6 @@ export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
   objects: {
-    equipment: Prisma.$EquipmentPayload<ExtArgs>[]
     bookingsAsFarmer: Prisma.$BookingPayload<ExtArgs>[]
     reviews: Prisma.$ReviewPayload<ExtArgs>[]
     aiQueries: Prisma.$AIQueryPayload<ExtArgs>[]
@@ -1708,7 +1576,6 @@ readonly fields: UserFieldRefs;
  */
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  equipment<T extends Prisma.User$equipmentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$equipmentArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EquipmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   bookingsAsFarmer<T extends Prisma.User$bookingsAsFarmerArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$bookingsAsFarmerArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   reviews<T extends Prisma.User$reviewsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   aiQueries<T extends Prisma.User$aiQueriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$aiQueriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AIQueryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -2144,30 +2011,6 @@ export type UserDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Limit how many Users to delete.
    */
   limit?: number
-}
-
-/**
- * User.equipment
- */
-export type User$equipmentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Equipment
-   */
-  select?: Prisma.EquipmentSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Equipment
-   */
-  omit?: Prisma.EquipmentOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.EquipmentInclude<ExtArgs> | null
-  where?: Prisma.EquipmentWhereInput
-  orderBy?: Prisma.EquipmentOrderByWithRelationInput | Prisma.EquipmentOrderByWithRelationInput[]
-  cursor?: Prisma.EquipmentWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.EquipmentScalarFieldEnum | Prisma.EquipmentScalarFieldEnum[]
 }
 
 /**
