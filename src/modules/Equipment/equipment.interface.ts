@@ -25,4 +25,6 @@ export interface IEquipmentFilterRequest {
   categoryId?: string;
   minPrice?: number;
   maxPrice?: number;
-}
+  page?: number;
+  limit?: number;
+}
