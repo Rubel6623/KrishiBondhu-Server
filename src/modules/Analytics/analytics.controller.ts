@@ -27,7 +27,20 @@ const getProviderStats = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const getFarmerStats = catchAsync(async (req: Request, res: Response) => {
+  const farmerId = (req as any).user.id;
+  const result = await AnalyticsService.getFarmerStats(farmerId);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Farmer stats retrieved successfully',
+    data: result,
+  });
+});
+
 export const AnalyticsController = {
   getAdminStats,
   getProviderStats,
+  getFarmerStats,
 };

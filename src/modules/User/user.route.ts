@@ -15,15 +15,27 @@ router.get(
 
 router.get(
   '/profile',
-  auth(UserRole.ADMIN, UserRole.FARMER, UserRole.PROVIDER),
+  auth(UserRole.ADMIN, UserRole.FARMER, UserRole.PROVIDER, UserRole.VETERINARIAN),
   UserController.getMyProfile
 );
 
 router.patch(
   '/profile',
-  auth(UserRole.ADMIN, UserRole.FARMER, UserRole.PROVIDER),
+  auth(UserRole.ADMIN, UserRole.FARMER, UserRole.PROVIDER, UserRole.VETERINARIAN),
   validateRequest(UserValidation.updateProfileSchema),
   UserController.updateProfile
+);
+
+router.patch(
+  '/:id/status',
+  auth(UserRole.ADMIN),
+  UserController.updateUserStatus
+);
+
+router.delete(
+  '/:id',
+  auth(UserRole.ADMIN),
+  UserController.deleteUser
 );
 
 router.get(

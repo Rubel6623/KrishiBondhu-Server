@@ -82,7 +82,46 @@ const getProviderStats = async (providerId: string): Promise<IProviderStats> => 
   };
 };
 
+const getFarmerStats = async (farmerId: string) => {
+  const myBookingsCount = await prisma.booking.count({
+    where: { farmerId },
+  });
+
+  const totalSpent = await prisma.booking.aggregate({
+    where: {
+      farmerId,
+      status: 'COMPLETED',
+    },
+    _sum: {
+      totalPrice: true,
+    },
+  });
+
+  const recentBookings = await prisma.booking.findMany({
+    where: { farmerId },
+    take: 5,
+    orderBy: {
+      createdAt: 'desc',
+    },
+    include: {
+      equipment: {
+        select: {
+          title: true,
+          images: true,
+        }
+      }
+    }
+  });
+
+  return {
+    bookingsCount: myBookingsCount,
+    totalSpent: totalSpent._sum.totalPrice || 0,
+    recentBookings,
+  };
+};
+
 export const AnalyticsService = {
   getAdminStats,
   getProviderStats,
+  getFarmerStats,
 };

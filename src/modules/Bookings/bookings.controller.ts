@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import httpStatus from "http-status";
-import { BookingStatus } from "../../generated/prisma/enums";
+import { BookingStatus } from "../../generated/prisma";
 import catchAsync from "../../utils/catchAsync";
 import sendResponse from "../../utils/sendResponse";
 import { BookingsService } from "./bookings.service";

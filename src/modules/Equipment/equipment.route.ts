@@ -11,7 +11,7 @@ router.get('/', EquipmentController.getAllEquipment);
 router.get('/:id', EquipmentController.getSingleEquipment);
 
 router.post(
-  '/create',
+  '/',
   auth(UserRole.PROVIDER, UserRole.ADMIN),
   validateRequest(createEquipmentSchema),
   EquipmentController.createEquipment

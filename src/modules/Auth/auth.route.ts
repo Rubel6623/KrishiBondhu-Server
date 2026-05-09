@@ -23,13 +23,13 @@ router.post('/social-login', AuthController.socialLogin);
 
 router.get(
   '/me',
-  auth(UserRole.ADMIN, UserRole.FARMER, UserRole.PROVIDER),
+  auth(UserRole.ADMIN, UserRole.FARMER, UserRole.PROVIDER, UserRole.VETERINARIAN),
   AuthController.getMe
 );
 
 router.put(
   '/me',
-  auth(UserRole.ADMIN, UserRole.FARMER, UserRole.PROVIDER),
+  auth(UserRole.ADMIN, UserRole.FARMER, UserRole.PROVIDER, UserRole.VETERINARIAN),
   AuthController.updateMe
 );
 

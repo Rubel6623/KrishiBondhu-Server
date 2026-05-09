@@ -23,6 +23,7 @@ export interface ICreateEquipmentInput {
 export interface IEquipmentFilterRequest {
   searchTerm?: string;
   categoryId?: string;
+  providerId?: string;
   minPrice?: number;
   maxPrice?: number;
   page?: number;

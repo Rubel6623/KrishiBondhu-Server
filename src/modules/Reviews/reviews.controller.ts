@@ -40,9 +40,33 @@ const deleteReview = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
+const getAllReviews = catchAsync(async (req: Request, res: Response) => {
+  const result = await ReviewsService.getAllReviews();
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Reviews retrieved successfully',
+    data: result,
+  });
+});
+
+const getMyReviews = catchAsync(async (req: Request, res: Response) => {
+  const userId = (req as any).user.id;
+  const result = await ReviewsService.getFarmerReviews(userId);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'My reviews retrieved successfully',
+    data: result,
+  });
+});
 
 export const ReviewsController = {
   createReview,
   getEquipmentReviews,
+  getAllReviews,
   deleteReview,
+  getMyReviews,
 };

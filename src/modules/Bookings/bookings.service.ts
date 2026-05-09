@@ -1,4 +1,4 @@
-import { BookingStatus } from "../../generated/prisma/enums";
+import { BookingStatus } from "../../generated/prisma";
 import { prisma } from "../../lib/prisma";
 import { IBooking, ICreateBookingInput } from "./bookings.interface";
 
@@ -37,7 +37,7 @@ const getMyBookings = async (userId: string, role: string, filters: any) => {
   
   if (role === "FARMER") {
     query.farmerId = userId;
-  } else {
+  } else if (role === "PROVIDER") {
     query.equipment = { providerId: userId };
   }
   

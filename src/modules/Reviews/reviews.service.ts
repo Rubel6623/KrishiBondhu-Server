@@ -97,9 +97,53 @@ const deleteReview = async (reviewId: string, userId: string) => {
     return { message: 'Review deleted successfully' };
   });
 };
+const getFarmerReviews = async (userId: string) => {
+  return await prisma.review.findMany({
+    where: {
+      userId,
+    },
+    include: {
+      equipment: {
+        select: {
+          id: true,
+          title: true,
+          images: true,
+        },
+      },
+    },
+    orderBy: {
+      createdAt: 'desc',
+    },
+  });
+};
+
+const getAllReviews = async () => {
+  return await prisma.review.findMany({
+    include: {
+      user: {
+        select: {
+          id: true,
+          name: true,
+          avatar: true,
+        },
+      },
+      equipment: {
+        select: {
+          id: true,
+          title: true,
+        },
+      },
+    },
+    orderBy: {
+      createdAt: 'desc',
+    },
+  });
+};
 
 export const ReviewsService = {
   createReview,
   getEquipmentReviews,
+  getAllReviews,
   deleteReview,
+  getFarmerReviews,
 };

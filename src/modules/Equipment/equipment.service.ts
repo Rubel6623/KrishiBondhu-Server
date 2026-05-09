@@ -13,7 +13,7 @@ const createEquipment = async (providerId: string, payload: ICreateEquipmentInpu
 };
 
 const getAllEquipment = async (filters: IEquipmentFilterRequest) => {
-  const { searchTerm, categoryId, minPrice, maxPrice, page = 1, limit = 10 } = filters;
+  const { searchTerm, categoryId, providerId, minPrice, maxPrice, page = 1, limit = 10 } = filters;
   const conditions: Prisma.EquipmentWhereInput[] = [];
 
   if (searchTerm) {
@@ -25,6 +25,7 @@ const getAllEquipment = async (filters: IEquipmentFilterRequest) => {
   }
 
   if (categoryId) conditions.push({ categoryId });
+  if (providerId) conditions.push({ providerId });
   if (minPrice) conditions.push({ pricePerDay: { gte: Number(minPrice) } });
   if (maxPrice) conditions.push({ pricePerDay: { lte: Number(maxPrice) } });
 

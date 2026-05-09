@@ -6,6 +6,7 @@ export enum UserRole {
   ADMIN = "ADMIN",
   FARMER = "FARMER",
   PROVIDER = "PROVIDER",
+  VETERINARIAN = "VETERINARIAN",
 }
 
 const auth = (...roles: UserRole[]) => {
@@ -26,11 +27,19 @@ const auth = (...roles: UserRole[]) => {
         process.env.JWT_SECRET?.trim() as string
       ) as JwtPayload;
 
-      const userData = await prisma.user.findUnique({
+      let userData: any = await prisma.user.findUnique({
         where: {
           id: decoded.id,
         },
       });
+
+      if (!userData) {
+        userData = await prisma.provider.findUnique({
+          where: {
+            id: decoded.id,
+          },
+        });
+      }
 
       if (!userData) {
         throw new Error("User not found!");

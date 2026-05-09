@@ -19,8 +19,23 @@ const updateProfile = async (
   });
 };
 
+const updateUserStatus = async (id: string, status: "ACTIVE" | "BANNED") => {
+  return await prisma.user.update({
+    where: { id },
+    data: { isVerified: status === "ACTIVE" },
+  });
+};
+
+const deleteUser = async (id: string) => {
+  return await prisma.user.delete({
+    where: { id },
+  });
+};
+
 export const UserService = {
   getAllUsers,
   getSingleUser,
   updateProfile,
+  updateUserStatus,
+  deleteUser,
 };

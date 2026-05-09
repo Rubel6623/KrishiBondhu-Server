@@ -1,16 +1,17 @@
 import { prisma } from "../../lib/prisma";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { Role } from "../../generated/prisma/enums";
-
+import { Role } from "../../generated/prisma";
 
 interface ILoginPayload {
-  email: string;
+  emailOrPhone: string;
   password: string;
 }
 
-interface IRegisterPayload extends ILoginPayload {
+interface IRegisterPayload {
   name: string;
+  email: string;
+  password: string;
   role: Role;
   avatar?: string;
   phone?: string;
@@ -24,49 +25,81 @@ interface ISocialLoginPayload {
 }
 
 const createUserIntoDB = async (payload: IRegisterPayload) => {
-  const hashPassword = await bcrypt.hash(payload.password, 8);
+  const { password, ...userData } = payload;
+
+  // Check if user already exists in either User or Provider table
+  const existingUser = await prisma.user.findUnique({
+    where: { email: payload.email },
+  });
+  const existingProvider = await prisma.provider.findUnique({
+    where: { email: payload.email },
+  });
+
+  if (existingUser || existingProvider) {
+    throw new Error("User already exists with this email");
+  }
+
+  // Check if phone already exists (if provided)
+  if (payload.phone) {
+    const existingPhoneUser = await prisma.user.findUnique({
+      where: { phone: payload.phone },
+    });
+    const existingPhoneProvider = await prisma.provider.findUnique({
+      where: { phone: payload.phone },
+    });
+
+    if (existingPhoneUser || existingPhoneProvider) {
+      throw new Error("User already exists with this phone number");
+    }
+  }
+
+  const hashPassword = await bcrypt.hash(password, 8);
 
   if (payload.role === Role.PROVIDER) {
     const result = await prisma.provider.create({
       data: {
-        ...payload,
+        ...userData,
         password: hashPassword,
-        role: payload.role as Role,
+        role: Role.PROVIDER,
       },
     });
-    const { password, ...newResult } = result;
+    const { password: _, ...newResult } = result;
     return newResult;
   } else {
     const result = await prisma.user.create({
       data: {
-        ...payload,
+        ...userData,
         password: hashPassword,
         role: payload.role as Role,
       },
     });
-    const { password, ...newResult } = result;
+    const { password: _, ...newResult } = result;
     return newResult;
   }
 };
 
-const loginUserIntoDB = async (payload: ILoginPayload) => {
-  let user: any = await prisma.user.findUnique({
-    where: { email: payload.email },
+const loginUserIntoDB = async (payload: any) => {
+  const { emailOrPhone, email, phone, password } = payload;
+  const identifier = emailOrPhone || email || phone;
+
+  let user: any = await prisma.user.findFirst({
+    where: {
+      OR: [{ email: identifier }, { phone: identifier }],
+    },
   });
 
-  let isProvider = false;
-
   if (!user) {
-    user = await prisma.provider.findUnique({
-      where: { email: payload.email },
+    user = await prisma.provider.findFirst({
+      where: {
+        OR: [{ email: identifier }, { phone: identifier }],
+      },
     });
     if (!user) {
       throw new Error("Invalid credentials");
     }
-    isProvider = true;
   }
 
-  const isPasswordValid = await bcrypt.compare(payload.password, user.password);
+  const isPasswordValid = await bcrypt.compare(password, user.password);
 
   if (!isPasswordValid) {
     throw new Error("Invalid password");
@@ -169,12 +202,14 @@ const updateMeInDB = async (
   userId: string,
   payload: Partial<IRegisterPayload>
 ) => {
+  const { role, password, email, ...updateData } = payload;
+
   let user: any = await prisma.user.findUnique({ where: { id: userId } });
-  
+
   if (user) {
     return await prisma.user.update({
       where: { id: userId },
-      data: payload,
+      data: updateData,
       select: {
         id: true,
         name: true,
@@ -189,7 +224,7 @@ const updateMeInDB = async (
   } else {
     return await prisma.provider.update({
       where: { id: userId },
-      data: payload,
+      data: updateData,
       select: {
         id: true,
         name: true,

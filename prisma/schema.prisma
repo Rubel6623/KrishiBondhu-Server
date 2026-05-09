@@ -1,8 +1,7 @@
 generator client {
-  provider = "prisma-client"
+  provider = "prisma-client-js"
   output   = "../src/generated/prisma"
 }
-
 
 datasource db {
   provider = "postgresql"
@@ -11,6 +10,7 @@ datasource db {
 enum Role {
   FARMER
   PROVIDER
+  VETERINARIAN
   ADMIN
 }
 
@@ -35,7 +35,7 @@ model User {
   name             String
   email            String         @unique
   password         String
-  phone            String?
+  phone            String?        @unique
   location         String?
   avatar           String?
   role             Role           @default(FARMER)
@@ -47,7 +47,42 @@ model User {
   reviews          Review[]
   aiQueries        AIQuery[]
   notifications    Notification[]
-  blogs            Blog[]         
+  blogs            Blog[]
+  
+  specialistProfile SpecialistProfile?
+  appointments      Appointment[]      @relation("FarmerAppointments")
+}
+
+model SpecialistProfile {
+  id              String   @id @default(cuid())
+  userId          String   @unique
+  user            User     @relation(fields: [userId], references: [id])
+  
+  specialization  String  
+  qualifications  String   
+  registrationNo  String   
+  experienceYears Int
+  consultationFee Float
+  bio             String?
+  
+  appointments    Appointment[]
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Appointment {
+  id              String           @id @default(cuid())
+  farmerId        String
+  specialistId    String
+  status          BookingStatus    @default(PENDING)
+  appointmentDate DateTime
+  problemDesc     String?          
+  meetingLink     String?          
+  
+  farmer          User             @relation("FarmerAppointments", fields: [farmerId], references: [id])
+  specialist      SpecialistProfile @relation(fields: [specialistId], references: [id])
+  
+  createdAt       DateTime         @default(now())
 }
 
 model Provider {
@@ -55,7 +90,7 @@ model Provider {
   name        String
   email       String    @unique
   password    String
-  phone       String?
+  phone       String?   @unique
   location    String?
   avatar      String?
   role        Role      @default(PROVIDER)

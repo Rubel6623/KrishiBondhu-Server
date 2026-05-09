@@ -12,11 +12,12 @@ const createUser = async (req: Request, res: Response) => {
       message: "User created successfully",
       data: result,
     });
-  } catch (e) {
+  } catch (e: any) {
     console.log(e);
     res.status(httpStatus.BAD_REQUEST).json({
-      error: "User creation failed",
-      details: e,
+      success: false,
+      message: e.message || "User creation failed",
+      error: e,
     });
   }
 };

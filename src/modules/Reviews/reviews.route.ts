@@ -6,6 +6,7 @@ import { ReviewsValidation } from './reviews.validation';
 
 const router = express.Router();
 
+router.get('/', ReviewsController.getAllReviews);
 router.get('/:equipmentId', ReviewsController.getEquipmentReviews);
 
 router.post(
@@ -19,6 +20,12 @@ router.delete(
   '/:id',
   auth(UserRole.FARMER, UserRole.ADMIN),
   ReviewsController.deleteReview
+);
+
+router.get(
+  '/my-reviews',
+  auth(UserRole.FARMER, UserRole.ADMIN),
+  ReviewsController.getMyReviews
 );
 
 export const ReviewsRoutes = router;

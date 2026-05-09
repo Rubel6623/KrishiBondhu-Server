@@ -20,4 +20,11 @@ router.get(
   AnalyticsController.getProviderStats
 );
 
+router.get(
+  '/farmer',
+  auth(UserRole.FARMER),
+  validateRequest(AnalyticsValidation.getStatsQuerySchema),
+  AnalyticsController.getFarmerStats
+);
+
 export const AnalyticsRoutes = router;
