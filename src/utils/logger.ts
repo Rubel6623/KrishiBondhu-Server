@@ -7,29 +7,37 @@ const myFormat = printf(({ level, message, timestamp }) => {
   return `${timestamp} [${level}]: ${message}`;
 });
 
+const transports: winston.transport[] = [];
+
+// Only use file logging in local development environments
+const isLocal = process.env.NODE_ENV === 'development' || !process.env.NODE_ENV;
+const isVercel = !!process.env.VERCEL;
+
+if (isLocal && !isVercel) {
+  transports.push(
+    new winston.transports.File({ filename: path.join('logs', 'combined.log') }),
+    new winston.transports.File({ filename: path.join('logs', 'error.log'), level: 'error' })
+  );
+}
+
+// Always use console logging in production (Vercel) and development
+transports.push(
+  new winston.transports.Console({
+    format: combine(
+      colorize(),
+      timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+      myFormat
+    ),
+  })
+);
+
 const logger = winston.createLogger({
   level: 'info',
   format: combine(
     timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
     myFormat
   ),
-  transports: [
-    // Write all logs with level 'info' and below to 'combined.log'
-    new winston.transports.File({ filename: path.join('logs', 'combined.log') }),
-    // Write all error logs to 'error.log'
-    new winston.transports.File({ filename: path.join('logs', 'error.log'), level: 'error' }),
-  ],
+  transports,
 });
-
-// If we're not in production then log to the `console`
-if (process.env.NODE_ENV !== 'production') {
-  logger.add(new winston.transports.Console({
-    format: combine(
-      colorize(),
-      timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
-      myFormat
-    ),
-  }));
-}
 
 export default logger;
