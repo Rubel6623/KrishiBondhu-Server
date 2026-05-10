@@ -1,5 +1,9 @@
 # KrishiBondhu Server
 
+## Live Deployment
+- **API Server:** [https://krishibondhu-server.onrender.com](https://krishibondhu-server.onrender.com)
+- **Client App:** [https://krishi-bondhu-client-lf3r9s5l4-rubel6623s-projects.vercel.app](https://krishi-bondhu-client-lf3r9s5l4-rubel6623s-projects.vercel.app)
+
 ## Project Overview
 The KrishiBondhu Server serves as the robust backend engine for the KrishiBondhu platform, handling all core business logic, role-based access control, real-time communications, and AI processing. It provides structured API endpoints to support the diverse needs of Farmers, Veterinarians, and Equipment Providers, managing appointments, equipment rentals, reviews, and secure data storage.
 
