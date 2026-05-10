@@ -8,7 +8,16 @@ export interface INotification {
 }
 
 export interface ICreateNotificationInput {
-  userId: string;
+  userId?: string;
   title: string;
   message: string;
+  providerId?: string;
+  specialistId?: string;
+  equipmentId?: string;
+  appointmentId?: string;
+  bookingId?: string;
+  reviewId?: string;
+  aiQueryId?: string;
+  blogId?: string;
+  type: 'BOOKING' | 'APPOINTMENT' | 'AI' | 'BLOG' | 'SYSTEM' | 'REVIEW';
 }

@@ -31,158 +31,205 @@ enum AIFeatureType {
 
 // Core Models
 model User {
-  id               String         @id @default(cuid())
-  name             String
-  email            String         @unique
-  password         String
-  phone            String?        @unique
-  location         String?
-  avatar           String?
-  role             Role           @default(FARMER)
-  isVerified       Boolean        @default(false)
-  createdAt        DateTime       @default(now())
-  updatedAt        DateTime       @updatedAt
-
-  bookingsAsFarmer Booking[]      @relation("FarmerBookings")
-  reviews          Review[]
-  aiQueries        AIQuery[]
-  notifications    Notification[]
-  blogs            Blog[]
-  
-  specialistProfile SpecialistProfile?
+  id                String             @id @default(cuid())
+  name              String
+  email             String             @unique
+  password          String
+  phone             String?            @unique
+  location          String?
+  avatar            String?
+  role              Role               @default(FARMER)
+  isVerified        Boolean            @default(false)
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+  aiQueries         AIQuery[]
   appointments      Appointment[]      @relation("FarmerAppointments")
+  blogs             Blog[]
+  bookingsAsFarmer  Booking[]          @relation("FarmerBookings")
+  notifications     Notification[]
+  reviews           Review[]
+  specialistProfile SpecialistProfile?
 }
 
 model SpecialistProfile {
-  id              String   @id @default(cuid())
-  userId          String   @unique
-  user            User     @relation(fields: [userId], references: [id])
-  
-  specialization  String  
-  qualifications  String   
-  registrationNo  String   
-  experienceYears Int
-  consultationFee Float
+  id              String        @id @default(cuid())
+  userId          String        @unique
+  specialization  String?
+  qualifications  String?
+  registrationNo  String?
+  experienceYears Int?
+  consultationFee Float?
   bio             String?
-  
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
   appointments    Appointment[]
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  user            User          @relation(fields: [userId], references: [id])
 }
 
 model Appointment {
-  id              String           @id @default(cuid())
-  farmerId        String
+  id              String            @id @default(cuid())
+  farmerId        String?
+  providerId      String?
   specialistId    String
-  status          BookingStatus    @default(PENDING)
+  status          BookingStatus     @default(PENDING)
   appointmentDate DateTime
-  problemDesc     String?          
-  meetingLink     String?          
-  
-  farmer          User             @relation("FarmerAppointments", fields: [farmerId], references: [id])
+  problemDesc     String?
+  meetingLink     String?
+  createdAt       DateTime          @default(now())
+  farmer          User?             @relation("FarmerAppointments", fields: [farmerId], references: [id])
+  provider        Provider?         @relation("ProviderAppointments", fields: [providerId], references: [id])
   specialist      SpecialistProfile @relation(fields: [specialistId], references: [id])
-  
-  createdAt       DateTime         @default(now())
 }
 
 model Provider {
-  id          String    @id @default(cuid())
-  name        String
-  email       String    @unique
-  password    String
-  phone       String?   @unique
-  location    String?
-  avatar      String?
-  role        Role      @default(PROVIDER)
-  isVerified  Boolean   @default(false)
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-
-  equipment        Equipment[]    @relation("ProviderEquipment")
+  id                 String         @id @default(cuid())
+  name               String
+  email              String         @unique
+  password           String
+  phone              String?        @unique
+  location           String?
+  avatar             String?
+  role               Role           @default(PROVIDER)
+  isVerified         Boolean        @default(false)
+  createdAt          DateTime       @default(now())
+  updatedAt          DateTime       @updatedAt
+  aiQueries          AIQuery[]
+  blogs              Blog[]
   bookingsAsProvider Booking[]      @relation("ProviderBookings")
-  reviews          Review[]
-  aiQueries        AIQuery[]
-  notifications    Notification[]
-  blogs            Blog[]         
+  equipment          Equipment[]    @relation("ProviderEquipment")
+  notifications      Notification[]
+  reviews            Review[]
+  appointments       Appointment[]  @relation("ProviderAppointments")
 }
 
-
 model Equipment {
-  id            String    @id @default(cuid())
-  title         String
-  description   String
-  pricePerDay   Float
-  location      String
-  availability  Boolean   @default(true)
-  rating        Float     @default(0) // Logic: Average of Review ratings
-  images        String[]
-  categoryId    String
-  providerId    String
-
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-
-  provider      Provider  @relation("ProviderEquipment", fields: [providerId], references: [id])
-  category      Category  @relation(fields: [categoryId], references: [id])
-  bookings      Booking[]
-  reviews       Review[]
+  id           String    @id @default(cuid())
+  title        String
+  description  String
+  pricePerDay  Float
+  location     String
+  availability Boolean   @default(true)
+  rating       Float     @default(0)
+  images       String[]
+  categoryId   String
+  providerId   String
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  bookings     Booking[]
+  category     Category  @relation(fields: [categoryId], references: [id])
+  provider     Provider  @relation("ProviderEquipment", fields: [providerId], references: [id])
+  reviews      Review[]
 
   @@index([location])
   @@index([categoryId])
 }
 
 model Category {
-  id          String   @id @default(cuid())
-  name        String   @unique
+  id          String      @id @default(cuid())
+  name        String      @unique
   description String?
   icon        String?
-
   equipment   Equipment[]
 }
 
 model Booking {
-  id            String        @id @default(cuid())
-  farmerId      String
-  equipmentId   String
-  providerId    String?
-  status        BookingStatus @default(PENDING)
-  startDate     DateTime
-  endDate       DateTime
-  totalPrice    Float
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @updatedAt
-
-  // Relations
-  farmer        User          @relation("FarmerBookings", fields: [farmerId], references: [id])
-  provider      Provider?     @relation("ProviderBookings", fields: [providerId], references: [id])
-  equipment     Equipment     @relation(fields: [equipmentId], references: [id])
+  id          String        @id @default(cuid())
+  farmerId    String
+  equipmentId String
+  status      BookingStatus @default(PENDING)
+  startDate   DateTime
+  endDate     DateTime
+  totalPrice  Float
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  providerId  String?
+  equipment   Equipment     @relation(fields: [equipmentId], references: [id])
+  farmer      User          @relation("FarmerBookings", fields: [farmerId], references: [id])
+  provider    Provider?     @relation("ProviderBookings", fields: [providerId], references: [id])
 }
 
 model Review {
-  id          String   @id @default(cuid())
-  rating      Int      // 1-5
+  id          String    @id @default(cuid())
+  rating      Int
   comment     String?
   userId      String?
-  providerId  String?
   equipmentId String
-  createdAt   DateTime @default(now())
-
-  user        User?     @relation(fields: [userId], references: [id])
-  provider    Provider? @relation(fields: [providerId], references: [id])
+  createdAt   DateTime  @default(now())
+  providerId  String?
   equipment   Equipment @relation(fields: [equipmentId], references: [id])
+  provider    Provider? @relation(fields: [providerId], references: [id])
+  user        User?     @relation(fields: [userId], references: [id])
 }
 
 model AIQuery {
   id          String        @id @default(cuid())
   userId      String?
-  providerId  String?
   prompt      String
   response    String
   featureType AIFeatureType
   createdAt   DateTime      @default(now())
-
-  user        User?         @relation(fields: [userId], references: [id])
+  providerId  String?
   provider    Provider?     @relation(fields: [providerId], references: [id])
+  user        User?         @relation(fields: [userId], references: [id])
+}
+
+model Blog {
+  id          String       @id @default(cuid())
+  title       String
+  slug        String       @unique
+  content     String
+  excerpt     String?
+  authorId    String?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  authorEmail String
+  authorName  String
+  category    BlogCategory @default(OTHER)
+  image       String?
+  providerId  String?
+  status      BlogStatus   @default(DRAFT)
+  author      User?        @relation(fields: [authorId], references: [id])
+  provider    Provider?    @relation(fields: [providerId], references: [id])
+}
+
+model Notification {
+  id            String    @id @default(cuid())
+  userId        String?
+  providerId    String?
+  title         String
+  message       String
+  type          String    @default("SYSTEM")
+  isRead        Boolean   @default(false)
+  createdAt     DateTime  @default(now())
+  
+  // Contextual IDs (Optional)
+  appointmentId String?
+  bookingId     String?
+  aiQueryId     String?
+  blogId        String?
+
+  provider      Provider? @relation(fields: [providerId], references: [id])
+  user          User?     @relation(fields: [userId], references: [id])
+}
+
+model ChatRoom {
+  id             String        @id @default(cuid())
+  contextType    String
+  contextId      String
+  createdAt      DateTime      @default(now())
+  messages       ChatMessage[]
+}
+
+model ChatMessage {
+  id           String    @id @default(cuid())
+  roomId       String
+  senderType   String    // 'USER' | 'PROVIDER'
+  senderId     String
+  senderName   String
+  content      String
+  isRead       Boolean   @default(false)
+  createdAt    DateTime  @default(now())
+  room         ChatRoom  @relation(fields: [roomId], references: [id])
 }
 
 enum BlogCategory {
@@ -199,37 +246,4 @@ enum BlogCategory {
 enum BlogStatus {
   DRAFT
   PUBLISHED
-}
-
-model Blog {
-  id          String       @id @default(cuid())
-  title       String
-  slug        String       @unique
-  content     String       // HTML or MDX
-  excerpt     String?
-  image       String?
-  category    BlogCategory @default(OTHER)
-  status      BlogStatus   @default(DRAFT)
-  authorId    String?
-  providerId  String?
-  authorName  String
-  authorEmail String
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
-
-  author      User?         @relation(fields: [authorId], references: [id])
-  provider    Provider?     @relation(fields: [providerId], references: [id])
-}
-
-model Notification {
-  id          String   @id @default(cuid())
-  userId      String?
-  providerId  String?
-  title       String
-  message     String
-  isRead      Boolean  @default(false)
-  createdAt   DateTime @default(now())
-
-  user        User?     @relation(fields: [userId], references: [id])
-  provider    Provider? @relation(fields: [providerId], references: [id])
 }

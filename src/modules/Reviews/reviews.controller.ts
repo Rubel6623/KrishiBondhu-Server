@@ -52,8 +52,14 @@ const getAllReviews = catchAsync(async (req: Request, res: Response) => {
 });
 
 const getMyReviews = catchAsync(async (req: Request, res: Response) => {
-  const userId = (req as any).user.id;
-  const result = await ReviewsService.getFarmerReviews(userId);
+  const user = (req as any).user;
+  let result;
+
+  if (user.role === 'PROVIDER') {
+    result = await ReviewsService.getProviderReviews(user.id);
+  } else {
+    result = await ReviewsService.getFarmerReviews(user.id);
+  }
 
   sendResponse(res, {
     statusCode: httpStatus.OK,

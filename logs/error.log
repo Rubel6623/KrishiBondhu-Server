@@ -1,0 +1,1252 @@
+2026-05-10 01:18:44 [error]: [Error] GET /api/specialists — 
+Invalid `prisma.specialistProfile.findMany()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:47
+
+   8 const cached = cacheGet<any[]>(CACHE_KEY_ALL);
+   9 if (cached) return cached;
+  10 
+→ 11 const data = await prisma.specialistProfile.findMany(
+The table `public.SpecialistProfile` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `prisma.specialistProfile.findMany()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:47
+
+   8 const cached = cacheGet<any[]>(CACHE_KEY_ALL);
+   9 if (cached) return cached;
+  10 
+→ 11 const data = await prisma.specialistProfile.findMany(
+The table `public.SpecialistProfile` does not exist in the current database.
+    at zr.handleRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:8286)
+    at zr.handleAndLogRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7581)
+    at zr.request (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7288)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at a (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:79:6862)
+    at Object.getAllSpecialists (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:16)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.controller.ts:8:18
+2026-05-10 01:19:15 [error]: [Error] GET /api/specialists — 
+Invalid `prisma.specialistProfile.findMany()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:47
+
+   8 const cached = cacheGet<any[]>(CACHE_KEY_ALL);
+   9 if (cached) return cached;
+  10 
+→ 11 const data = await prisma.specialistProfile.findMany(
+The table `public.SpecialistProfile` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `prisma.specialistProfile.findMany()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:47
+
+   8 const cached = cacheGet<any[]>(CACHE_KEY_ALL);
+   9 if (cached) return cached;
+  10 
+→ 11 const data = await prisma.specialistProfile.findMany(
+The table `public.SpecialistProfile` does not exist in the current database.
+    at zr.handleRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:8286)
+    at zr.handleAndLogRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7581)
+    at zr.request (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7288)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at a (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:79:6862)
+    at Object.getAllSpecialists (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:16)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.controller.ts:8:18
+2026-05-10 01:19:15 [error]: [Error] GET /api/specialists — 
+Invalid `prisma.specialistProfile.findMany()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:47
+
+   8 const cached = cacheGet<any[]>(CACHE_KEY_ALL);
+   9 if (cached) return cached;
+  10 
+→ 11 const data = await prisma.specialistProfile.findMany(
+The table `public.SpecialistProfile` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `prisma.specialistProfile.findMany()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:47
+
+   8 const cached = cacheGet<any[]>(CACHE_KEY_ALL);
+   9 if (cached) return cached;
+  10 
+→ 11 const data = await prisma.specialistProfile.findMany(
+The table `public.SpecialistProfile` does not exist in the current database.
+    at zr.handleRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:8286)
+    at zr.handleAndLogRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7581)
+    at zr.request (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7288)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at a (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:79:6862)
+    at Object.getAllSpecialists (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:16)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.controller.ts:8:18
+2026-05-10 01:19:15 [error]: [Error] GET /api/specialists — 
+Invalid `prisma.specialistProfile.findMany()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:47
+
+   8 const cached = cacheGet<any[]>(CACHE_KEY_ALL);
+   9 if (cached) return cached;
+  10 
+→ 11 const data = await prisma.specialistProfile.findMany(
+The table `public.SpecialistProfile` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `prisma.specialistProfile.findMany()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:47
+
+   8 const cached = cacheGet<any[]>(CACHE_KEY_ALL);
+   9 if (cached) return cached;
+  10 
+→ 11 const data = await prisma.specialistProfile.findMany(
+The table `public.SpecialistProfile` does not exist in the current database.
+    at zr.handleRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:8286)
+    at zr.handleAndLogRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7581)
+    at zr.request (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7288)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at a (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:79:6862)
+    at Object.getAllSpecialists (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:16)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.controller.ts:8:18
+2026-05-10 01:19:15 [error]: [Error] GET /api/specialists — 
+Invalid `prisma.specialistProfile.findMany()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:47
+
+   8 const cached = cacheGet<any[]>(CACHE_KEY_ALL);
+   9 if (cached) return cached;
+  10 
+→ 11 const data = await prisma.specialistProfile.findMany(
+The table `public.SpecialistProfile` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `prisma.specialistProfile.findMany()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:47
+
+   8 const cached = cacheGet<any[]>(CACHE_KEY_ALL);
+   9 if (cached) return cached;
+  10 
+→ 11 const data = await prisma.specialistProfile.findMany(
+The table `public.SpecialistProfile` does not exist in the current database.
+    at zr.handleRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:8286)
+    at zr.handleAndLogRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7581)
+    at zr.request (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7288)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at a (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:79:6862)
+    at Object.getAllSpecialists (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:16)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.controller.ts:8:18
+2026-05-10 01:19:38 [error]: [Error] GET /api/specialists — 
+Invalid `prisma.specialistProfile.findMany()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:47
+
+   8 const cached = cacheGet<any[]>(CACHE_KEY_ALL);
+   9 if (cached) return cached;
+  10 
+→ 11 const data = await prisma.specialistProfile.findMany(
+The table `public.SpecialistProfile` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `prisma.specialistProfile.findMany()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:47
+
+   8 const cached = cacheGet<any[]>(CACHE_KEY_ALL);
+   9 if (cached) return cached;
+  10 
+→ 11 const data = await prisma.specialistProfile.findMany(
+The table `public.SpecialistProfile` does not exist in the current database.
+    at zr.handleRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:8286)
+    at zr.handleAndLogRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7581)
+    at zr.request (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7288)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at a (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:79:6862)
+    at Object.getAllSpecialists (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:16)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.controller.ts:8:18
+2026-05-10 01:19:39 [error]: [Error] GET /api/specialists — 
+Invalid `prisma.specialistProfile.findMany()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:47
+
+   8 const cached = cacheGet<any[]>(CACHE_KEY_ALL);
+   9 if (cached) return cached;
+  10 
+→ 11 const data = await prisma.specialistProfile.findMany(
+The table `public.SpecialistProfile` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `prisma.specialistProfile.findMany()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:47
+
+   8 const cached = cacheGet<any[]>(CACHE_KEY_ALL);
+   9 if (cached) return cached;
+  10 
+→ 11 const data = await prisma.specialistProfile.findMany(
+The table `public.SpecialistProfile` does not exist in the current database.
+    at zr.handleRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:8286)
+    at zr.handleAndLogRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7581)
+    at zr.request (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7288)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at a (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:79:6862)
+    at Object.getAllSpecialists (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:16)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.controller.ts:8:18
+2026-05-10 01:19:39 [error]: [Error] GET /api/specialists — 
+Invalid `prisma.specialistProfile.findMany()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:47
+
+   8 const cached = cacheGet<any[]>(CACHE_KEY_ALL);
+   9 if (cached) return cached;
+  10 
+→ 11 const data = await prisma.specialistProfile.findMany(
+The table `public.SpecialistProfile` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `prisma.specialistProfile.findMany()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:47
+
+   8 const cached = cacheGet<any[]>(CACHE_KEY_ALL);
+   9 if (cached) return cached;
+  10 
+→ 11 const data = await prisma.specialistProfile.findMany(
+The table `public.SpecialistProfile` does not exist in the current database.
+    at zr.handleRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:8286)
+    at zr.handleAndLogRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7581)
+    at zr.request (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7288)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at a (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:79:6862)
+    at Object.getAllSpecialists (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:16)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.controller.ts:8:18
+2026-05-10 01:19:39 [error]: [Error] GET /api/specialists — 
+Invalid `prisma.specialistProfile.findMany()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:47
+
+   8 const cached = cacheGet<any[]>(CACHE_KEY_ALL);
+   9 if (cached) return cached;
+  10 
+→ 11 const data = await prisma.specialistProfile.findMany(
+The table `public.SpecialistProfile` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `prisma.specialistProfile.findMany()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:47
+
+   8 const cached = cacheGet<any[]>(CACHE_KEY_ALL);
+   9 if (cached) return cached;
+  10 
+→ 11 const data = await prisma.specialistProfile.findMany(
+The table `public.SpecialistProfile` does not exist in the current database.
+    at zr.handleRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:8286)
+    at zr.handleAndLogRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7581)
+    at zr.request (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7288)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at a (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:79:6862)
+    at Object.getAllSpecialists (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:16)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.controller.ts:8:18
+2026-05-10 01:19:39 [error]: [Error] GET /api/specialists — 
+Invalid `prisma.specialistProfile.findMany()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:47
+
+   8 const cached = cacheGet<any[]>(CACHE_KEY_ALL);
+   9 if (cached) return cached;
+  10 
+→ 11 const data = await prisma.specialistProfile.findMany(
+The table `public.SpecialistProfile` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `prisma.specialistProfile.findMany()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:47
+
+   8 const cached = cacheGet<any[]>(CACHE_KEY_ALL);
+   9 if (cached) return cached;
+  10 
+→ 11 const data = await prisma.specialistProfile.findMany(
+The table `public.SpecialistProfile` does not exist in the current database.
+    at zr.handleRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:8286)
+    at zr.handleAndLogRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7581)
+    at zr.request (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7288)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at a (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:79:6862)
+    at Object.getAllSpecialists (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:16)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.controller.ts:8:18
+2026-05-10 01:19:39 [error]: [Error] GET /api/specialists — 
+Invalid `prisma.specialistProfile.findMany()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:47
+
+   8 const cached = cacheGet<any[]>(CACHE_KEY_ALL);
+   9 if (cached) return cached;
+  10 
+→ 11 const data = await prisma.specialistProfile.findMany(
+The table `public.SpecialistProfile` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `prisma.specialistProfile.findMany()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:47
+
+   8 const cached = cacheGet<any[]>(CACHE_KEY_ALL);
+   9 if (cached) return cached;
+  10 
+→ 11 const data = await prisma.specialistProfile.findMany(
+The table `public.SpecialistProfile` does not exist in the current database.
+    at zr.handleRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:8286)
+    at zr.handleAndLogRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7581)
+    at zr.request (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7288)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at a (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:79:6862)
+    at Object.getAllSpecialists (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:16)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.controller.ts:8:18
+2026-05-10 01:31:14 [error]: [Error] GET /api/specialists — 
+Invalid `prisma.specialistProfile.findMany()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:47
+
+   8 const cached = cacheGet<any[]>(CACHE_KEY_ALL);
+   9 if (cached) return cached;
+  10 
+→ 11 const data = await prisma.specialistProfile.findMany(
+The table `public.SpecialistProfile` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `prisma.specialistProfile.findMany()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:47
+
+   8 const cached = cacheGet<any[]>(CACHE_KEY_ALL);
+   9 if (cached) return cached;
+  10 
+→ 11 const data = await prisma.specialistProfile.findMany(
+The table `public.SpecialistProfile` does not exist in the current database.
+    at zr.handleRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:8286)
+    at zr.handleAndLogRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7581)
+    at zr.request (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7288)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at a (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:79:6862)
+    at Object.getAllSpecialists (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:16)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.controller.ts:8:18
+2026-05-10 01:32:37 [error]: [Error] GET /api/specialists — 
+Invalid `prisma.specialistProfile.findMany()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:47
+
+   8 const cached = cacheGet<any[]>(CACHE_KEY_ALL);
+   9 if (cached) return cached;
+  10 
+→ 11 const data = await prisma.specialistProfile.findMany(
+The table `public.SpecialistProfile` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `prisma.specialistProfile.findMany()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:47
+
+   8 const cached = cacheGet<any[]>(CACHE_KEY_ALL);
+   9 if (cached) return cached;
+  10 
+→ 11 const data = await prisma.specialistProfile.findMany(
+The table `public.SpecialistProfile` does not exist in the current database.
+    at zr.handleRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:8286)
+    at zr.handleAndLogRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7581)
+    at zr.request (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7288)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at a (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:79:6862)
+    at Object.getAllSpecialists (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.service.ts:11:16)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Specialists\specialists.controller.ts:8:18
+2026-05-10 11:38:30 [error]: [Error] POST /api/appointments — 
+Invalid `prisma.appointment.create()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Appointments\appointments.service.ts:15:48
+
+  12 
+  13 if (!specialist) throw new Error("Specialist not found");
+  14 
+→ 15 const appointment = await prisma.appointment.create(
+Foreign key constraint violated on the constraint: `Appointment_farmerId_fkey`
+PrismaClientKnownRequestError: 
+Invalid `prisma.appointment.create()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Appointments\appointments.service.ts:15:48
+
+  12 
+  13 if (!specialist) throw new Error("Specialist not found");
+  14 
+→ 15 const appointment = await prisma.appointment.create(
+Foreign key constraint violated on the constraint: `Appointment_farmerId_fkey`
+    at zr.handleRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:8286)
+    at zr.handleAndLogRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7581)
+    at zr.request (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7288)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at a (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:79:6862)
+    at Object.createAppointment (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Appointments\appointments.service.ts:15:23)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Appointments\appointments.controller.ts:10:18
+2026-05-10 11:53:33 [error]: [Error] PATCH /api/appointments/cmozcv7rj0002h8brs77ilgg0/status — 
+Invalid `prisma.notification.create()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Appointments\appointments.service.ts:109:31
+
+  106 // Notify booker (Farmer or Provider)
+  107 const bookerId = appointment.farmerId || appointment.providerId;
+  108 if (bookerId) {
+→ 109   await prisma.notification.create(
+Foreign key constraint violated on the constraint: `Notification_userId_fkey`
+PrismaClientKnownRequestError: 
+Invalid `prisma.notification.create()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Appointments\appointments.service.ts:109:31
+
+  106 // Notify booker (Farmer or Provider)
+  107 const bookerId = appointment.farmerId || appointment.providerId;
+  108 if (bookerId) {
+→ 109   await prisma.notification.create(
+Foreign key constraint violated on the constraint: `Notification_userId_fkey`
+    at zr.handleRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:8286)
+    at zr.handleAndLogRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7581)
+    at zr.request (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7288)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at a (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:79:6862)
+    at Object.updateAppointmentStatus (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Appointments\appointments.service.ts:109:5)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Appointments\appointments.controller.ts:38:18
+2026-05-10 12:52:13 [error]: [Chat] join_room error: 
+Invalid `prisma.chatMessage.updateMany()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Chat\chat.socket.ts:65:34
+
+  62 await socket.join(roomId);
+  63 
+  64 // Mark messages as read for this user
+→ 65 await prisma.chatMessage.updateMany({
+       where: {
+         roomId: "cmozeghbq00001cbr8jgmaiog",
+         senderId: {
+           not: "cmoxz946o0002hobrj1ljusq5"
+         },
+         isRead: false
+       },
+       data: {
+         isRead: true,
+         ~~~~~~
+     ?   id?: String | StringFieldUpdateOperationsInput,
+     ?   senderType?: String | StringFieldUpdateOperationsInput,
+     ?   senderId?: String | StringFieldUpdateOperationsInput,
+     ?   senderName?: String | StringFieldUpdateOperationsInput,
+     ?   content?: String | StringFieldUpdateOperationsInput,
+     ?   createdAt?: DateTime | DateTimeFieldUpdateOperationsInput
+       }
+     })
+
+Unknown argument `isRead`. Available options are marked with ?.
+2026-05-10 12:52:49 [error]: [Error] GET /api/chat/my-rooms — 
+Invalid `prisma.chatMessage.count()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Chat\chat.route.ts:108:54
+
+  105   }
+  106 }
+  107 
+→ 108 const unreadCount = await prisma.chatMessage.count({
+        select: {
+          _count: {
+            select: {
+              _all: true
+            }
+          }
+        },
+        where: {
+          roomId: "cmozeghbq00001cbr8jgmaiog",
+          senderId: {
+            not: "cmoy1vewa0000z4brfo60r96o"
+          },
+          isRead: false,
+          ~~~~~~
+      ?   AND?: ChatMessageWhereInput | ChatMessageWhereInput[],
+      ?   OR?: ChatMessageWhereInput[],
+      ?   NOT?: ChatMessageWhereInput | ChatMessageWhereInput[],
+      ?   id?: StringFilter | String,
+      ?   senderType?: StringFilter | String,
+      ?   senderName?: StringFilter | String,
+      ?   content?: StringFilter | String,
+      ?   createdAt?: DateTimeFilter | DateTime,
+      ?   room?: ChatRoomScalarRelationFilter | ChatRoomWhereInput
+        }
+      })
+
+Unknown argument `isRead`. Available options are marked with ?.
+PrismaClientValidationError: 
+Invalid `prisma.chatMessage.count()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Chat\chat.route.ts:108:54
+
+  105   }
+  106 }
+  107 
+→ 108 const unreadCount = await prisma.chatMessage.count({
+        select: {
+          _count: {
+            select: {
+              _all: true
+            }
+          }
+        },
+        where: {
+          roomId: "cmozeghbq00001cbr8jgmaiog",
+          senderId: {
+            not: "cmoy1vewa0000z4brfo60r96o"
+          },
+          isRead: false,
+          ~~~~~~
+      ?   AND?: ChatMessageWhereInput | ChatMessageWhereInput[],
+      ?   OR?: ChatMessageWhereInput[],
+      ?   NOT?: ChatMessageWhereInput | ChatMessageWhereInput[],
+      ?   id?: StringFilter | String,
+      ?   senderType?: StringFilter | String,
+      ?   senderName?: StringFilter | String,
+      ?   content?: StringFilter | String,
+      ?   createdAt?: DateTimeFilter | DateTime,
+      ?   room?: ChatRoomScalarRelationFilter | ChatRoomWhereInput
+        }
+      })
+
+Unknown argument `isRead`. Available options are marked with ?.
+    at ar (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:14:1374)
+    at zr.handleRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7929)
+    at zr.handleAndLogRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7581)
+    at zr.request (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7288)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at a (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:79:6862)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Chat\chat.route.ts:108:29
+    at async Promise.all (index 0)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Chat\chat.route.ts:60:30
+2026-05-10 12:53:01 [error]: [Chat] join_room error: 
+Invalid `prisma.chatMessage.updateMany()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Chat\chat.socket.ts:65:34
+
+  62 await socket.join(roomId);
+  63 
+  64 // Mark messages as read for this user
+→ 65 await prisma.chatMessage.updateMany({
+       where: {
+         roomId: "cmozeghbq00001cbr8jgmaiog",
+         senderId: {
+           not: "cmoxz946o0002hobrj1ljusq5"
+         },
+         isRead: false
+       },
+       data: {
+         isRead: true,
+         ~~~~~~
+     ?   id?: String | StringFieldUpdateOperationsInput,
+     ?   senderType?: String | StringFieldUpdateOperationsInput,
+     ?   senderId?: String | StringFieldUpdateOperationsInput,
+     ?   senderName?: String | StringFieldUpdateOperationsInput,
+     ?   content?: String | StringFieldUpdateOperationsInput,
+     ?   createdAt?: DateTime | DateTimeFieldUpdateOperationsInput
+       }
+     })
+
+Unknown argument `isRead`. Available options are marked with ?.
+2026-05-10 12:53:17 [error]: [Error] GET /api/chat/unread-count — 
+Invalid `prisma.chatMessage.count()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Chat\chat.route.ts:17:44
+
+  14 catchAsync(async (req: Request, res: Response) => {
+  15   const userId = req.user.id;
+  16 
+→ 17   const count = await prisma.chatMessage.count({
+         select: {
+           _count: {
+             select: {
+               _all: true
+             }
+           }
+         },
+         where: {
+           room: {
+             OR: [
+               {
+                 contextType: "APPOINTMENT",
+                 contextId: {
+                   in: [
+                     "cmozcmq100000h8br9agniqmx",
+                     "cmozcv7rj0002h8brs77ilgg0",
+                     "cmozd5w7e0001b8bruu9szed9"
+                   ]
+                 }
+               },
+               {
+                 contextType: "BOOKING",
+                 contextId: {
+                   in: []
+                 }
+               }
+             ]
+           },
+           senderId: {
+             not: "cmoxz946o0002hobrj1ljusq5"
+           },
+           isRead: false,
+           ~~~~~~
+       ?   AND?: ChatMessageWhereInput | ChatMessageWhereInput[],
+       ?   OR?: ChatMessageWhereInput[],
+       ?   NOT?: ChatMessageWhereInput | ChatMessageWhereInput[],
+       ?   id?: StringFilter | String,
+       ?   roomId?: StringFilter | String,
+       ?   senderType?: StringFilter | String,
+       ?   senderName?: StringFilter | String,
+       ?   content?: StringFilter | String,
+       ?   createdAt?: DateTimeFilter | DateTime
+         }
+       })
+
+Unknown argument `isRead`. Available options are marked with ?.
+PrismaClientValidationError: 
+Invalid `prisma.chatMessage.count()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Chat\chat.route.ts:17:44
+
+  14 catchAsync(async (req: Request, res: Response) => {
+  15   const userId = req.user.id;
+  16 
+→ 17   const count = await prisma.chatMessage.count({
+         select: {
+           _count: {
+             select: {
+               _all: true
+             }
+           }
+         },
+         where: {
+           room: {
+             OR: [
+               {
+                 contextType: "APPOINTMENT",
+                 contextId: {
+                   in: [
+                     "cmozcmq100000h8br9agniqmx",
+                     "cmozcv7rj0002h8brs77ilgg0",
+                     "cmozd5w7e0001b8bruu9szed9"
+                   ]
+                 }
+               },
+               {
+                 contextType: "BOOKING",
+                 contextId: {
+                   in: []
+                 }
+               }
+             ]
+           },
+           senderId: {
+             not: "cmoxz946o0002hobrj1ljusq5"
+           },
+           isRead: false,
+           ~~~~~~
+       ?   AND?: ChatMessageWhereInput | ChatMessageWhereInput[],
+       ?   OR?: ChatMessageWhereInput[],
+       ?   NOT?: ChatMessageWhereInput | ChatMessageWhereInput[],
+       ?   id?: StringFilter | String,
+       ?   roomId?: StringFilter | String,
+       ?   senderType?: StringFilter | String,
+       ?   senderName?: StringFilter | String,
+       ?   content?: StringFilter | String,
+       ?   createdAt?: DateTimeFilter | DateTime
+         }
+       })
+
+Unknown argument `isRead`. Available options are marked with ?.
+    at ar (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:14:1374)
+    at zr.handleRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7929)
+    at zr.handleAndLogRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7581)
+    at zr.request (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7288)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at a (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:79:6862)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Chat\chat.route.ts:17:19
+2026-05-10 12:53:19 [error]: [Error] GET /api/chat/unread-count — 
+Invalid `prisma.chatMessage.count()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Chat\chat.route.ts:17:44
+
+  14 catchAsync(async (req: Request, res: Response) => {
+  15   const userId = req.user.id;
+  16 
+→ 17   const count = await prisma.chatMessage.count({
+         select: {
+           _count: {
+             select: {
+               _all: true
+             }
+           }
+         },
+         where: {
+           room: {
+             OR: [
+               {
+                 contextType: "APPOINTMENT",
+                 contextId: {
+                   in: [
+                     "cmozcv7rj0002h8brs77ilgg0",
+                     "cmozd5w7e0001b8bruu9szed9"
+                   ]
+                 }
+               },
+               {
+                 contextType: "BOOKING",
+                 contextId: {
+                   in: []
+                 }
+               }
+             ]
+           },
+           senderId: {
+             not: "cmoy1vewa0000z4brfo60r96o"
+           },
+           isRead: false,
+           ~~~~~~
+       ?   AND?: ChatMessageWhereInput | ChatMessageWhereInput[],
+       ?   OR?: ChatMessageWhereInput[],
+       ?   NOT?: ChatMessageWhereInput | ChatMessageWhereInput[],
+       ?   id?: StringFilter | String,
+       ?   roomId?: StringFilter | String,
+       ?   senderType?: StringFilter | String,
+       ?   senderName?: StringFilter | String,
+       ?   content?: StringFilter | String,
+       ?   createdAt?: DateTimeFilter | DateTime
+         }
+       })
+
+Unknown argument `isRead`. Available options are marked with ?.
+PrismaClientValidationError: 
+Invalid `prisma.chatMessage.count()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Chat\chat.route.ts:17:44
+
+  14 catchAsync(async (req: Request, res: Response) => {
+  15   const userId = req.user.id;
+  16 
+→ 17   const count = await prisma.chatMessage.count({
+         select: {
+           _count: {
+             select: {
+               _all: true
+             }
+           }
+         },
+         where: {
+           room: {
+             OR: [
+               {
+                 contextType: "APPOINTMENT",
+                 contextId: {
+                   in: [
+                     "cmozcv7rj0002h8brs77ilgg0",
+                     "cmozd5w7e0001b8bruu9szed9"
+                   ]
+                 }
+               },
+               {
+                 contextType: "BOOKING",
+                 contextId: {
+                   in: []
+                 }
+               }
+             ]
+           },
+           senderId: {
+             not: "cmoy1vewa0000z4brfo60r96o"
+           },
+           isRead: false,
+           ~~~~~~
+       ?   AND?: ChatMessageWhereInput | ChatMessageWhereInput[],
+       ?   OR?: ChatMessageWhereInput[],
+       ?   NOT?: ChatMessageWhereInput | ChatMessageWhereInput[],
+       ?   id?: StringFilter | String,
+       ?   roomId?: StringFilter | String,
+       ?   senderType?: StringFilter | String,
+       ?   senderName?: StringFilter | String,
+       ?   content?: StringFilter | String,
+       ?   createdAt?: DateTimeFilter | DateTime
+         }
+       })
+
+Unknown argument `isRead`. Available options are marked with ?.
+    at ar (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:14:1374)
+    at zr.handleRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7929)
+    at zr.handleAndLogRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7581)
+    at zr.request (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7288)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at a (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:79:6862)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Chat\chat.route.ts:17:19
+2026-05-10 12:53:22 [error]: [Error] GET /api/chat/my-rooms — 
+Invalid `prisma.chatMessage.count()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Chat\chat.route.ts:137:54
+
+  134   }
+  135 }
+  136 
+→ 137 const unreadCount = await prisma.chatMessage.count({
+        select: {
+          _count: {
+            select: {
+              _all: true
+            }
+          }
+        },
+        where: {
+          roomId: "cmozeghbq00001cbr8jgmaiog",
+          senderId: {
+            not: "cmoy1vewa0000z4brfo60r96o"
+          },
+          isRead: false,
+          ~~~~~~
+      ?   AND?: ChatMessageWhereInput | ChatMessageWhereInput[],
+      ?   OR?: ChatMessageWhereInput[],
+      ?   NOT?: ChatMessageWhereInput | ChatMessageWhereInput[],
+      ?   id?: StringFilter | String,
+      ?   senderType?: StringFilter | String,
+      ?   senderName?: StringFilter | String,
+      ?   content?: StringFilter | String,
+      ?   createdAt?: DateTimeFilter | DateTime,
+      ?   room?: ChatRoomScalarRelationFilter | ChatRoomWhereInput
+        }
+      })
+
+Unknown argument `isRead`. Available options are marked with ?.
+PrismaClientValidationError: 
+Invalid `prisma.chatMessage.count()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Chat\chat.route.ts:137:54
+
+  134   }
+  135 }
+  136 
+→ 137 const unreadCount = await prisma.chatMessage.count({
+        select: {
+          _count: {
+            select: {
+              _all: true
+            }
+          }
+        },
+        where: {
+          roomId: "cmozeghbq00001cbr8jgmaiog",
+          senderId: {
+            not: "cmoy1vewa0000z4brfo60r96o"
+          },
+          isRead: false,
+          ~~~~~~
+      ?   AND?: ChatMessageWhereInput | ChatMessageWhereInput[],
+      ?   OR?: ChatMessageWhereInput[],
+      ?   NOT?: ChatMessageWhereInput | ChatMessageWhereInput[],
+      ?   id?: StringFilter | String,
+      ?   senderType?: StringFilter | String,
+      ?   senderName?: StringFilter | String,
+      ?   content?: StringFilter | String,
+      ?   createdAt?: DateTimeFilter | DateTime,
+      ?   room?: ChatRoomScalarRelationFilter | ChatRoomWhereInput
+        }
+      })
+
+Unknown argument `isRead`. Available options are marked with ?.
+    at ar (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:14:1374)
+    at zr.handleRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7929)
+    at zr.handleAndLogRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7581)
+    at zr.request (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7288)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at a (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:79:6862)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Chat\chat.route.ts:137:29
+    at async Promise.all (index 0)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Chat\chat.route.ts:89:30
+2026-05-10 12:53:23 [error]: [Error] GET /api/chat/my-rooms — 
+Invalid `prisma.chatMessage.count()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Chat\chat.route.ts:137:54
+
+  134   }
+  135 }
+  136 
+→ 137 const unreadCount = await prisma.chatMessage.count({
+        select: {
+          _count: {
+            select: {
+              _all: true
+            }
+          }
+        },
+        where: {
+          roomId: "cmozeghbq00001cbr8jgmaiog",
+          senderId: {
+            not: "cmoy1vewa0000z4brfo60r96o"
+          },
+          isRead: false,
+          ~~~~~~
+      ?   AND?: ChatMessageWhereInput | ChatMessageWhereInput[],
+      ?   OR?: ChatMessageWhereInput[],
+      ?   NOT?: ChatMessageWhereInput | ChatMessageWhereInput[],
+      ?   id?: StringFilter | String,
+      ?   senderType?: StringFilter | String,
+      ?   senderName?: StringFilter | String,
+      ?   content?: StringFilter | String,
+      ?   createdAt?: DateTimeFilter | DateTime,
+      ?   room?: ChatRoomScalarRelationFilter | ChatRoomWhereInput
+        }
+      })
+
+Unknown argument `isRead`. Available options are marked with ?.
+PrismaClientValidationError: 
+Invalid `prisma.chatMessage.count()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Chat\chat.route.ts:137:54
+
+  134   }
+  135 }
+  136 
+→ 137 const unreadCount = await prisma.chatMessage.count({
+        select: {
+          _count: {
+            select: {
+              _all: true
+            }
+          }
+        },
+        where: {
+          roomId: "cmozeghbq00001cbr8jgmaiog",
+          senderId: {
+            not: "cmoy1vewa0000z4brfo60r96o"
+          },
+          isRead: false,
+          ~~~~~~
+      ?   AND?: ChatMessageWhereInput | ChatMessageWhereInput[],
+      ?   OR?: ChatMessageWhereInput[],
+      ?   NOT?: ChatMessageWhereInput | ChatMessageWhereInput[],
+      ?   id?: StringFilter | String,
+      ?   senderType?: StringFilter | String,
+      ?   senderName?: StringFilter | String,
+      ?   content?: StringFilter | String,
+      ?   createdAt?: DateTimeFilter | DateTime,
+      ?   room?: ChatRoomScalarRelationFilter | ChatRoomWhereInput
+        }
+      })
+
+Unknown argument `isRead`. Available options are marked with ?.
+    at ar (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:14:1374)
+    at zr.handleRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7929)
+    at zr.handleAndLogRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7581)
+    at zr.request (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7288)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at a (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:79:6862)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Chat\chat.route.ts:137:29
+    at async Promise.all (index 0)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Chat\chat.route.ts:89:30
+2026-05-10 12:53:26 [error]: [Chat] join_room error: 
+Invalid `prisma.chatMessage.updateMany()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Chat\chat.socket.ts:65:34
+
+  62 await socket.join(roomId);
+  63 
+  64 // Mark messages as read for this user
+→ 65 await prisma.chatMessage.updateMany({
+       where: {
+         roomId: "cmozeghbq00001cbr8jgmaiog",
+         senderId: {
+           not: "cmoxz946o0002hobrj1ljusq5"
+         },
+         isRead: false
+       },
+       data: {
+         isRead: true,
+         ~~~~~~
+     ?   id?: String | StringFieldUpdateOperationsInput,
+     ?   senderType?: String | StringFieldUpdateOperationsInput,
+     ?   senderId?: String | StringFieldUpdateOperationsInput,
+     ?   senderName?: String | StringFieldUpdateOperationsInput,
+     ?   content?: String | StringFieldUpdateOperationsInput,
+     ?   createdAt?: DateTime | DateTimeFieldUpdateOperationsInput
+       }
+     })
+
+Unknown argument `isRead`. Available options are marked with ?.
+2026-05-10 12:54:19 [error]: [Error] GET /api/chat/unread-count — 
+Invalid `prisma.chatMessage.count()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Chat\chat.route.ts:17:44
+
+  14 catchAsync(async (req: Request, res: Response) => {
+  15   const userId = req.user.id;
+  16 
+→ 17   const count = await prisma.chatMessage.count({
+         select: {
+           _count: {
+             select: {
+               _all: true
+             }
+           }
+         },
+         where: {
+           room: {
+             OR: [
+               {
+                 contextType: "APPOINTMENT",
+                 contextId: {
+                   in: [
+                     "cmozcv7rj0002h8brs77ilgg0",
+                     "cmozd5w7e0001b8bruu9szed9"
+                   ]
+                 }
+               },
+               {
+                 contextType: "BOOKING",
+                 contextId: {
+                   in: []
+                 }
+               }
+             ]
+           },
+           senderId: {
+             not: "cmoy1vewa0000z4brfo60r96o"
+           },
+           isRead: false,
+           ~~~~~~
+       ?   AND?: ChatMessageWhereInput | ChatMessageWhereInput[],
+       ?   OR?: ChatMessageWhereInput[],
+       ?   NOT?: ChatMessageWhereInput | ChatMessageWhereInput[],
+       ?   id?: StringFilter | String,
+       ?   roomId?: StringFilter | String,
+       ?   senderType?: StringFilter | String,
+       ?   senderName?: StringFilter | String,
+       ?   content?: StringFilter | String,
+       ?   createdAt?: DateTimeFilter | DateTime
+         }
+       })
+
+Unknown argument `isRead`. Available options are marked with ?.
+PrismaClientValidationError: 
+Invalid `prisma.chatMessage.count()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Chat\chat.route.ts:17:44
+
+  14 catchAsync(async (req: Request, res: Response) => {
+  15   const userId = req.user.id;
+  16 
+→ 17   const count = await prisma.chatMessage.count({
+         select: {
+           _count: {
+             select: {
+               _all: true
+             }
+           }
+         },
+         where: {
+           room: {
+             OR: [
+               {
+                 contextType: "APPOINTMENT",
+                 contextId: {
+                   in: [
+                     "cmozcv7rj0002h8brs77ilgg0",
+                     "cmozd5w7e0001b8bruu9szed9"
+                   ]
+                 }
+               },
+               {
+                 contextType: "BOOKING",
+                 contextId: {
+                   in: []
+                 }
+               }
+             ]
+           },
+           senderId: {
+             not: "cmoy1vewa0000z4brfo60r96o"
+           },
+           isRead: false,
+           ~~~~~~
+       ?   AND?: ChatMessageWhereInput | ChatMessageWhereInput[],
+       ?   OR?: ChatMessageWhereInput[],
+       ?   NOT?: ChatMessageWhereInput | ChatMessageWhereInput[],
+       ?   id?: StringFilter | String,
+       ?   roomId?: StringFilter | String,
+       ?   senderType?: StringFilter | String,
+       ?   senderName?: StringFilter | String,
+       ?   content?: StringFilter | String,
+       ?   createdAt?: DateTimeFilter | DateTime
+         }
+       })
+
+Unknown argument `isRead`. Available options are marked with ?.
+    at ar (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:14:1374)
+    at zr.handleRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7929)
+    at zr.handleAndLogRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7581)
+    at zr.request (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7288)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at a (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:79:6862)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Chat\chat.route.ts:17:19
+2026-05-10 12:54:20 [error]: [Error] GET /api/chat/unread-count — 
+Invalid `prisma.chatMessage.count()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Chat\chat.route.ts:17:44
+
+  14 catchAsync(async (req: Request, res: Response) => {
+  15   const userId = req.user.id;
+  16 
+→ 17   const count = await prisma.chatMessage.count({
+         select: {
+           _count: {
+             select: {
+               _all: true
+             }
+           }
+         },
+         where: {
+           room: {
+             OR: [
+               {
+                 contextType: "APPOINTMENT",
+                 contextId: {
+                   in: [
+                     "cmozcmq100000h8br9agniqmx",
+                     "cmozcv7rj0002h8brs77ilgg0",
+                     "cmozd5w7e0001b8bruu9szed9"
+                   ]
+                 }
+               },
+               {
+                 contextType: "BOOKING",
+                 contextId: {
+                   in: []
+                 }
+               }
+             ]
+           },
+           senderId: {
+             not: "cmoxz946o0002hobrj1ljusq5"
+           },
+           isRead: false,
+           ~~~~~~
+       ?   AND?: ChatMessageWhereInput | ChatMessageWhereInput[],
+       ?   OR?: ChatMessageWhereInput[],
+       ?   NOT?: ChatMessageWhereInput | ChatMessageWhereInput[],
+       ?   id?: StringFilter | String,
+       ?   roomId?: StringFilter | String,
+       ?   senderType?: StringFilter | String,
+       ?   senderName?: StringFilter | String,
+       ?   content?: StringFilter | String,
+       ?   createdAt?: DateTimeFilter | DateTime
+         }
+       })
+
+Unknown argument `isRead`. Available options are marked with ?.
+PrismaClientValidationError: 
+Invalid `prisma.chatMessage.count()` invocation in
+C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Chat\chat.route.ts:17:44
+
+  14 catchAsync(async (req: Request, res: Response) => {
+  15   const userId = req.user.id;
+  16 
+→ 17   const count = await prisma.chatMessage.count({
+         select: {
+           _count: {
+             select: {
+               _all: true
+             }
+           }
+         },
+         where: {
+           room: {
+             OR: [
+               {
+                 contextType: "APPOINTMENT",
+                 contextId: {
+                   in: [
+                     "cmozcmq100000h8br9agniqmx",
+                     "cmozcv7rj0002h8brs77ilgg0",
+                     "cmozd5w7e0001b8bruu9szed9"
+                   ]
+                 }
+               },
+               {
+                 contextType: "BOOKING",
+                 contextId: {
+                   in: []
+                 }
+               }
+             ]
+           },
+           senderId: {
+             not: "cmoxz946o0002hobrj1ljusq5"
+           },
+           isRead: false,
+           ~~~~~~
+       ?   AND?: ChatMessageWhereInput | ChatMessageWhereInput[],
+       ?   OR?: ChatMessageWhereInput[],
+       ?   NOT?: ChatMessageWhereInput | ChatMessageWhereInput[],
+       ?   id?: StringFilter | String,
+       ?   roomId?: StringFilter | String,
+       ?   senderType?: StringFilter | String,
+       ?   senderName?: StringFilter | String,
+       ?   content?: StringFilter | String,
+       ?   createdAt?: DateTimeFilter | DateTime
+         }
+       })
+
+Unknown argument `isRead`. Available options are marked with ?.
+    at ar (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:14:1374)
+    at zr.handleRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7929)
+    at zr.handleAndLogRequestError (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7581)
+    at zr.request (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:69:7288)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at a (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\generated\prisma\runtime\client.js:79:6862)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\Chat\chat.route.ts:17:19
+2026-05-10 13:15:45 [error]: [Error] GET /api/ai/suggestions?q=cr — [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+    at handleResponseNotOk (C:\Level_2\Assignment-06\KrishiBondhu-Server\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at makeRequest (C:\Level_2\Assignment-06\KrishiBondhu-Server\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at generateContent (C:\Level_2\Assignment-06\KrishiBondhu-Server\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at Object.getSearchSuggestions (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\AI\aI.service.ts:231:18)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\AI\aI.controller.ts:43:18
+2026-05-10 13:17:31 [error]: [Error] GET /api/ai/suggestions?q=fi — [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+    at handleResponseNotOk (C:\Level_2\Assignment-06\KrishiBondhu-Server\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at makeRequest (C:\Level_2\Assignment-06\KrishiBondhu-Server\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at generateContent (C:\Level_2\Assignment-06\KrishiBondhu-Server\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at Object.getSearchSuggestions (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\AI\aI.service.ts:231:18)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\AI\aI.controller.ts:43:18
+2026-05-10 13:17:32 [error]: [Error] GET /api/ai/suggestions?q=fert — [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+    at handleResponseNotOk (C:\Level_2\Assignment-06\KrishiBondhu-Server\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at makeRequest (C:\Level_2\Assignment-06\KrishiBondhu-Server\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at generateContent (C:\Level_2\Assignment-06\KrishiBondhu-Server\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at Object.getSearchSuggestions (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\AI\aI.service.ts:231:18)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\AI\aI.controller.ts:43:18
+2026-05-10 13:17:33 [error]: [Error] GET /api/ai/suggestions?q=ferti — [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+    at handleResponseNotOk (C:\Level_2\Assignment-06\KrishiBondhu-Server\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at makeRequest (C:\Level_2\Assignment-06\KrishiBondhu-Server\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at generateContent (C:\Level_2\Assignment-06\KrishiBondhu-Server\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at Object.getSearchSuggestions (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\AI\aI.service.ts:231:18)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\AI\aI.controller.ts:43:18
+2026-05-10 13:19:09 [error]: [Error] GET /api/ai/suggestions?q=fertili — [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+    at handleResponseNotOk (C:\Level_2\Assignment-06\KrishiBondhu-Server\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at makeRequest (C:\Level_2\Assignment-06\KrishiBondhu-Server\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at generateContent (C:\Level_2\Assignment-06\KrishiBondhu-Server\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at Object.getSearchSuggestions (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\AI\aI.service.ts:231:18)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\AI\aI.controller.ts:43:18
+2026-05-10 13:19:10 [error]: [Error] GET /api/ai/suggestions?q=fertilizer — [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+    at handleResponseNotOk (C:\Level_2\Assignment-06\KrishiBondhu-Server\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at makeRequest (C:\Level_2\Assignment-06\KrishiBondhu-Server\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at generateContent (C:\Level_2\Assignment-06\KrishiBondhu-Server\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at Object.getSearchSuggestions (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\AI\aI.service.ts:231:18)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\AI\aI.controller.ts:43:18
+2026-05-10 13:19:14 [error]: [Error] GET /api/ai/suggestions?q=fertilize — [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+    at handleResponseNotOk (C:\Level_2\Assignment-06\KrishiBondhu-Server\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at makeRequest (C:\Level_2\Assignment-06\KrishiBondhu-Server\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at generateContent (C:\Level_2\Assignment-06\KrishiBondhu-Server\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at Object.getSearchSuggestions (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\AI\aI.service.ts:231:18)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\AI\aI.controller.ts:43:18
+2026-05-10 13:19:19 [error]: [Error] GET /api/ai/suggestions?q=do — [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+    at handleResponseNotOk (C:\Level_2\Assignment-06\KrishiBondhu-Server\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at makeRequest (C:\Level_2\Assignment-06\KrishiBondhu-Server\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at generateContent (C:\Level_2\Assignment-06\KrishiBondhu-Server\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at Object.getSearchSuggestions (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\AI\aI.service.ts:231:18)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\AI\aI.controller.ts:43:18
+2026-05-10 13:19:20 [error]: [Error] GET /api/ai/suggestions?q=doc — [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+    at handleResponseNotOk (C:\Level_2\Assignment-06\KrishiBondhu-Server\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at makeRequest (C:\Level_2\Assignment-06\KrishiBondhu-Server\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at generateContent (C:\Level_2\Assignment-06\KrishiBondhu-Server\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at Object.getSearchSuggestions (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\AI\aI.service.ts:231:18)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\AI\aI.controller.ts:43:18
+2026-05-10 13:19:29 [error]: [Error] GET /api/ai/suggestions?q=har — [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+    at handleResponseNotOk (C:\Level_2\Assignment-06\KrishiBondhu-Server\node_modules\@google\generative-ai\dist\index.js:434:11)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at makeRequest (C:\Level_2\Assignment-06\KrishiBondhu-Server\node_modules\@google\generative-ai\dist\index.js:403:9)
+    at generateContent (C:\Level_2\Assignment-06\KrishiBondhu-Server\node_modules\@google\generative-ai\dist\index.js:867:22)
+    at Object.getSearchSuggestions (C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\AI\aI.service.ts:231:18)
+    at C:\Level_2\Assignment-06\KrishiBondhu-Server\src\modules\AI\aI.controller.ts:43:18
+2026-05-10 13:25:29 [error]: [AI Service] getSearchSuggestions failed: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-05-10 13:25:30 [error]: [AI Service] getSearchSuggestions failed: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-05-10 13:25:41 [error]: [AI Service] getSearchSuggestions failed: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-05-10 13:25:41 [error]: [AI Service] getSearchSuggestions failed: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-05-10 13:30:57 [error]: [AI Service] getSearchSuggestions failed: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-05-10 13:31:02 [error]: [AI Service] getSearchSuggestions failed: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-05-10 13:31:53 [error]: [AI Service] getSearchSuggestions failed: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-05-10 13:31:58 [error]: [AI Service] getSearchSuggestions failed: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-05-10 13:32:00 [error]: [AI Service] getSearchSuggestions failed: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-05-10 13:32:06 [error]: [AI Service] getSearchSuggestions failed: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-05-10 13:32:08 [error]: [AI Service] getSearchSuggestions failed: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-05-10 13:32:10 [error]: [AI Service] getSearchSuggestions failed: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-05-10 13:32:11 [error]: [AI Service] getSearchSuggestions failed: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-05-10 13:42:03 [error]: [AI Service] getSearchSuggestions failed: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-05-10 13:51:54 [error]: [AI Service] getSearchSuggestions failed: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-05-10 13:52:03 [error]: [AI Service] getSearchSuggestions failed: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-05-10 14:17:25 [error]: [Queue] Failed job: "ai-query:cmozi2cr70000qsbrx600ekob" — [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-05-10 14:17:25 [error]: [Queue] AI response failed for query cmozi2cr70000qsbrx600ekob: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-05-10 14:17:32 [error]: [Queue] Failed job: "ai-query:cmozi2i1y0001qsbrt2ax025i" — [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-05-10 14:17:32 [error]: [Queue] AI response failed for query cmozi2i1y0001qsbrt2ax025i: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.

@@ -65,6 +65,19 @@ const createUserIntoDB = async (payload: IRegisterPayload) => {
     });
     const { password: _, ...newResult } = result;
     return newResult;
+  } else if (payload.role === Role.VETERINARIAN) {
+    const result = await prisma.user.create({
+      data: {
+        ...userData,
+        password: hashPassword,
+        role: Role.VETERINARIAN,
+        specialistProfile: {
+          create: {}, // Create an empty profile skeleton
+        },
+      },
+    });
+    const { password: _, ...newResult } = result;
+    return newResult;
   } else {
     const result = await prisma.user.create({
       data: {

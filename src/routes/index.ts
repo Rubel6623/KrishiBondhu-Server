@@ -10,6 +10,10 @@ import { NotificationsRoutes } from '../modules/Notifications/notifications.rout
 import { AIRoutes } from '../modules/AI/aI.route';
 import { AnalyticsRoutes } from '../modules/Analytics/analytics.route';
 import { CategoryRoutes } from '../modules/Category/category.route';
+import { SpecialistRoutes } from '../modules/Specialists/specialists.route';
+import { ActivityRoutes } from '../modules/Activity/activity.route';
+import { AppointmentRoutes } from '../modules/Appointments/appointments.route';
+import { ChatRoutes } from '../modules/Chat/chat.route';
 
 const router = Router();
 
@@ -57,6 +61,22 @@ const moduleRoutes: { path: string; route: any }[] = [
   {
     path: '/categories',
     route: CategoryRoutes,
+  },
+  {
+    path: '/specialists',
+    route: SpecialistRoutes,
+  },
+  {
+    path: '/activity',
+    route: ActivityRoutes,
+  },
+  {
+    path: '/appointments',
+    route: AppointmentRoutes,
+  },
+  {
+    path: '/chat',
+    route: ChatRoutes,
   },
 ];
 

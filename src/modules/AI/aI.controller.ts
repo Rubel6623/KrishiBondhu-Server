@@ -23,7 +23,39 @@ const getMyAIQueries = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'AI queries retrieved successfully',
+    message: 'AI query history retrieved successfully',
+    data: result,
+  });
+});
+
+const getAIAnalytics = catchAsync(async (req: Request, res: Response) => {
+  const result = await AIService.getAIAnalytics();
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'AI analytics retrieved successfully',
+    data: result,
+  });
+});
+
+const getSearchSuggestions = catchAsync(async (req: Request, res: Response) => {
+  const { q } = req.query;
+  const result = await AIService.getSearchSuggestions(q as string);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Suggestions retrieved successfully',
+    data: result,
+  });
+});
+
+const getSmartRecommendations = catchAsync(async (req: Request, res: Response) => {
+  const userId = (req as any).user.id;
+  const result = await AIService.getSmartRecommendations(userId);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Smart recommendations generated successfully',
     data: result,
   });
 });
@@ -31,4 +63,7 @@ const getMyAIQueries = catchAsync(async (req: Request, res: Response) => {
 export const AIController = {
   createAIQuery,
   getMyAIQueries,
+  getAIAnalytics,
+  getSmartRecommendations,
+  getSearchSuggestions,
 };

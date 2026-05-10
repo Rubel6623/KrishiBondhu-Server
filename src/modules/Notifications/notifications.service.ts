@@ -1,11 +1,21 @@
-import { Notification } from '../../generated/prisma/client';
 import { prisma } from '../../lib/prisma';
+import { emitToUser } from '../../utils/socket';
 import { ICreateNotificationInput } from './notifications.interface';
 
 const createNotification = async (payload: ICreateNotificationInput) => {
-  return await prisma.notification.create({
+  const notification = await prisma.notification.create({
     data: payload,
   });
+
+  // Emit real-time notification via Socket.io
+  if (payload.userId) {
+    emitToUser(payload.userId, 'new_notification', notification);
+  }
+  if (payload.providerId) {
+    emitToUser(payload.providerId, 'new_notification', notification);
+  }
+
+  return notification;
 };
 
 const getMyNotifications = async (userId: string) => {

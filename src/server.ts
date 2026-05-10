@@ -2,6 +2,8 @@ import app from './app';
 import config from './config';
 import { prisma } from './lib/prisma';
 import { Server } from 'http';
+import { initSocket } from './utils/socket';
+import { registerChatHandlers } from './modules/Chat/chat.socket';
 
 let server: Server;
 
@@ -13,6 +15,14 @@ async function main() {
     server = app.listen(config.port, () => {
       console.log(`🚀 Krishi Bondhu listening on port ${config.port}`);
     });
+
+    // Initialize Global Socket.IO
+    const io = initSocket(server);
+    
+    // Register specific handlers
+    registerChatHandlers(io);
+    
+    console.log('⚡ Real-time systems (Chat & Notifications) initialized');
 
   } catch (err) {
     console.error('❌ Failed to start server:', err);

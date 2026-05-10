@@ -19,4 +19,21 @@ router.get(
   AIController.getMyAIQueries
 );
 
+router.get(
+  '/analytics',
+  auth(UserRole.ADMIN),
+  AIController.getAIAnalytics
+);
+
+router.get(
+  '/recommendations',
+  auth(UserRole.FARMER, UserRole.PROVIDER, UserRole.VETERINARIAN),
+  AIController.getSmartRecommendations
+);
+
+router.get(
+  '/suggestions',
+  AIController.getSearchSuggestions
+);
+
 export const AIRoutes = router;

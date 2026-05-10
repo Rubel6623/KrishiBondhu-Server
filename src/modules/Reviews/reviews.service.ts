@@ -1,13 +1,24 @@
 import { prisma } from '../../lib/prisma';
 import { ICreateReviewInput } from './reviews.interface';
+import { emitToUser } from '../../utils/socket';
+import { NotificationsService } from '../Notifications/notifications.service';
 
 const createReview = async (userId: string, payload: ICreateReviewInput) => {
   const result = await prisma.$transaction(async (tx) => {
+    // Get the equipment to find the providerId
+    const equipment = await tx.equipment.findUnique({
+      where: { id: payload.equipmentId },
+      select: { providerId: true }
+    });
+
+    if (!equipment) throw new Error("Equipment not found");
+
     // Create the review
     const review = await tx.review.create({
       data: {
         ...payload,
         userId,
+        providerId: equipment.providerId
       },
     });
 
@@ -32,6 +43,28 @@ const createReview = async (userId: string, payload: ICreateReviewInput) => {
 
     return review;
   });
+
+  // Fetch review with user and equipment details for real-time notification
+  const fullReview = await prisma.review.findUnique({
+    where: { id: result.id },
+    include: {
+      user: { select: { name: true } },
+      equipment: { select: { title: true } }
+    }
+  });
+
+  if (fullReview && fullReview.providerId) {
+    // Create system notification for provider
+    await NotificationsService.createNotification({
+      providerId: fullReview.providerId,
+      title: "New Review Received",
+      message: `${fullReview.user?.name} left a ${fullReview.rating}-star review for ${fullReview.equipment?.title ?? 'your equipment'}.`,
+      type: "REVIEW"
+    });
+
+    // Emit real-time socket event
+    emitToUser(fullReview.providerId, "new_review", fullReview);
+  }
 
   return result;
 };
@@ -117,6 +150,32 @@ const getFarmerReviews = async (userId: string) => {
   });
 };
 
+const getProviderReviews = async (providerId: string) => {
+  return await prisma.review.findMany({
+    where: {
+      providerId,
+    },
+    include: {
+      user: {
+        select: {
+          id: true,
+          name: true,
+          avatar: true,
+        },
+      },
+      equipment: {
+        select: {
+          id: true,
+          title: true,
+        },
+      },
+    },
+    orderBy: {
+      createdAt: 'desc',
+    },
+  });
+};
+
 const getAllReviews = async () => {
   return await prisma.review.findMany({
     include: {
@@ -146,4 +205,5 @@ export const ReviewsService = {
   getAllReviews,
   deleteReview,
   getFarmerReviews,
+  getProviderReviews,
 };

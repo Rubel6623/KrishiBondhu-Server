@@ -150,6 +150,7 @@ exports.Prisma.SpecialistProfileScalarFieldEnum = {
 exports.Prisma.AppointmentScalarFieldEnum = {
   id: 'id',
   farmerId: 'farmerId',
+  providerId: 'providerId',
   specialistId: 'specialistId',
   status: 'status',
   appointmentDate: 'appointmentDate',
@@ -198,13 +199,13 @@ exports.Prisma.BookingScalarFieldEnum = {
   id: 'id',
   farmerId: 'farmerId',
   equipmentId: 'equipmentId',
-  providerId: 'providerId',
   status: 'status',
   startDate: 'startDate',
   endDate: 'endDate',
   totalPrice: 'totalPrice',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  providerId: 'providerId'
 };
 
 exports.Prisma.ReviewScalarFieldEnum = {
@@ -212,19 +213,19 @@ exports.Prisma.ReviewScalarFieldEnum = {
   rating: 'rating',
   comment: 'comment',
   userId: 'userId',
-  providerId: 'providerId',
   equipmentId: 'equipmentId',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  providerId: 'providerId'
 };
 
 exports.Prisma.AIQueryScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
-  providerId: 'providerId',
   prompt: 'prompt',
   response: 'response',
   featureType: 'featureType',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  providerId: 'providerId'
 };
 
 exports.Prisma.BlogScalarFieldEnum = {
@@ -233,15 +234,15 @@ exports.Prisma.BlogScalarFieldEnum = {
   slug: 'slug',
   content: 'content',
   excerpt: 'excerpt',
-  image: 'image',
-  category: 'category',
-  status: 'status',
   authorId: 'authorId',
-  providerId: 'providerId',
-  authorName: 'authorName',
-  authorEmail: 'authorEmail',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  authorEmail: 'authorEmail',
+  authorName: 'authorName',
+  category: 'category',
+  image: 'image',
+  providerId: 'providerId',
+  status: 'status'
 };
 
 exports.Prisma.NotificationScalarFieldEnum = {
@@ -250,6 +251,29 @@ exports.Prisma.NotificationScalarFieldEnum = {
   providerId: 'providerId',
   title: 'title',
   message: 'message',
+  type: 'type',
+  isRead: 'isRead',
+  createdAt: 'createdAt',
+  appointmentId: 'appointmentId',
+  bookingId: 'bookingId',
+  aiQueryId: 'aiQueryId',
+  blogId: 'blogId'
+};
+
+exports.Prisma.ChatRoomScalarFieldEnum = {
+  id: 'id',
+  contextType: 'contextType',
+  contextId: 'contextId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.ChatMessageScalarFieldEnum = {
+  id: 'id',
+  roomId: 'roomId',
+  senderType: 'senderType',
+  senderId: 'senderId',
+  senderName: 'senderName',
+  content: 'content',
   isRead: 'isRead',
   createdAt: 'createdAt'
 };
@@ -317,7 +341,9 @@ exports.Prisma.ModelName = {
   Review: 'Review',
   AIQuery: 'AIQuery',
   Blog: 'Blog',
-  Notification: 'Notification'
+  Notification: 'Notification',
+  ChatRoom: 'ChatRoom',
+  ChatMessage: 'ChatMessage'
 };
 
 /**
