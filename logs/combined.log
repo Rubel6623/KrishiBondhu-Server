@@ -3933,3 +3933,9 @@ Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguag
 2026-05-10 17:01:23 [info]: GET /api/auth/me
 2026-05-10 17:01:24 [info]: GET /api/auth/me
 2026-05-10 17:01:26 [info]: GET /api/auth/me
+2026-05-10 22:36:19 [info]: [Socket] Global Socket.IO initialized
+2026-05-10 22:36:19 [info]: [Chat] Socket.IO initialized
+2026-05-10 22:40:16 [info]: [Socket] Global Socket.IO initialized
+2026-05-10 22:40:16 [info]: [Chat] Socket.IO initialized
+2026-05-10 22:41:57 [info]: [Socket] Global Socket.IO initialized
+2026-05-10 22:41:57 [info]: [Chat] Socket.IO initialized

@@ -8,7 +8,7 @@ import { BookingStatus } from "../../generated/prisma";
 const createAppointment = catchAsync(async (req: Request, res: Response) => {
   const userId = (req as any).user.id;
   const result = await AppointmentService.createAppointment(userId, req.body);
-  
+
   sendResponse(res, {
     statusCode: httpStatus.CREATED,
     success: true,
@@ -21,7 +21,7 @@ const getMyAppointments = catchAsync(async (req: Request, res: Response) => {
   const userId = (req as any).user.id;
   const role = (req as any).user.role;
   const result = await AppointmentService.getMyAppointments(userId, role);
-  
+
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -34,9 +34,9 @@ const updateAppointmentStatus = catchAsync(async (req: Request, res: Response) =
   const userId = (req as any).user.id;
   const { id } = req.params;
   const status = req.body.status as BookingStatus;
-  
+
   const result = await AppointmentService.updateAppointmentStatus(id as string, status, userId);
-  
+
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
