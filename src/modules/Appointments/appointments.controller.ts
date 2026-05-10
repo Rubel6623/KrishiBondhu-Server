@@ -35,7 +35,7 @@ const updateAppointmentStatus = catchAsync(async (req: Request, res: Response) =
   const { id } = req.params;
   const status = req.body.status as BookingStatus;
   
-  const result = await AppointmentService.updateAppointmentStatus(id, status, userId);
+  const result = await AppointmentService.updateAppointmentStatus(id as string, status, userId);
   
   sendResponse(res, {
     statusCode: httpStatus.OK,
